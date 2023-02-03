@@ -18,13 +18,15 @@ public class ControladorJugador : MonoBehaviour
         if (Input.GetKey("left"))
         {
             //gameObject.transform.Translate(-50f * Time.deltaTime, 0, 0);
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100 * Time.deltaTime, 0));
+           // gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100 * Time.deltaTime, 0));
+            gameObject.transform.Translate(-15F * Time.deltaTime, 0, 0);
 
         }
         if (Input.GetKey("right"))
         {
             //gameObject.transform.Translate(50f * Time.deltaTime, 0, 0);
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(100 * Time.deltaTime, 0));
+           // gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(100 * Time.deltaTime, 0));
+            gameObject.transform.Translate(15F*Time.deltaTime, 0, 0);
 
         }
         if (Input.GetKey(KeyCode.Space))
