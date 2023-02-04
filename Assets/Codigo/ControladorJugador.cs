@@ -9,23 +9,22 @@ public class ControladorJugador : MonoBehaviour
 
     void Start()
     {
-        
+        gameObject.transform.position = new Vector3(0.19F, -2.58F, 0);
     }
 
 
     void Update()
     {
-        if (Input.GetKey("left"))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            //gameObject.transform.Translate(-50f * Time.deltaTime, 0, 0);
-           // gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100 * Time.deltaTime, 0));
+            //He decidido hacerlo con traslate porque no es necesario que tenga fisicas a la hora de girar o ir hacia abajo
+
             gameObject.transform.Translate(-15F * Time.deltaTime, 0, 0);
 
         }
-        if (Input.GetKey("right"))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            //gameObject.transform.Translate(50f * Time.deltaTime, 0, 0);
-           // gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(100 * Time.deltaTime, 0));
+
             gameObject.transform.Translate(15F*Time.deltaTime, 0, 0);
 
         }
