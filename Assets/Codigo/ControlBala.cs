@@ -15,5 +15,10 @@ public class ControlBala : MonoBehaviour
         transform.Translate(Vector2.up*velocidad*Time.deltaTime);
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Piedra")){
+            Debug.Log("LE DI");
+        }
+    }
 }

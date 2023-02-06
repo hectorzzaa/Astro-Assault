@@ -32,5 +32,8 @@ public class ControladorJugador : MonoBehaviour
         {
             gameObject.transform.Translate(0, -15F * Time.deltaTime, 0);
         }
+        if(Input.GetKey(KeyCode.UpArrow)) {
+            gameObject.transform.Translate(0, 15F * Time.deltaTime, 0);
+        }
     }
 }
