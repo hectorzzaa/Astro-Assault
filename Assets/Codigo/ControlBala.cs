@@ -19,6 +19,8 @@ public class ControlBala : MonoBehaviour
     {
         if (collision.CompareTag("Piedra")){
             Debug.Log("LE DI");
+            collision.GetComponent<Enemigo>().recibirDaño(1);
         }
+
     }
 }
