@@ -31,7 +31,7 @@ public class Enemigo : MonoBehaviour
         if (vida == 0)
         {
             estaDestruido= true;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         
     }
