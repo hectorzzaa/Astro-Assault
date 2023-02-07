@@ -17,7 +17,7 @@ public class Enemigo : MonoBehaviour
     void Start()
     {
         vida = 1;
-        estaDestruido = false;
+        
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class Enemigo : MonoBehaviour
         {
             
             Debug.Log("esta roto");
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             estaDestruido = true;
             Debug.Log("He puesto estadestruido en true"+estaDestruido);
         }

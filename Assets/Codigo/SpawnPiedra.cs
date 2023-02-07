@@ -15,14 +15,15 @@ public class SpawnPiedra : MonoBehaviour
     {
         
             Instantiate(enemigo);
-        
-       
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+
 
         //ene = GameObject.Find("Enemigo Object").GetComponent<Enemigo>();
         while (contador < 3&&enemigo.GetComponent<Enemigo>().estaDestruido)
