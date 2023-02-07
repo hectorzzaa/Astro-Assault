@@ -8,38 +8,29 @@ public class SpawnPiedra : MonoBehaviour
 
 
     [SerializeField] private GameObject enemigo;
-    int contador = 0;
 
+    float timer;
     // Start is called before the first frame update
     void Start()
     {
-        
-            Instantiate(enemigo);
-
+        Instantiate(enemigo);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
-        //ene = GameObject.Find("Enemigo Object").GetComponent<Enemigo>();
-        while (contador < 3&&enemigo.GetComponent<Enemigo>().estaDestruido)
+        timer += Time.deltaTime;
+        while (timer>=3F)
         {
-            float x = Random.Range(-30F, 30);
-            Vector2 position = new Vector2(x,0);
+            timer = 0;
+            float x = Random.Range(-30F, 30F);
+            Vector2 position = new Vector2(x, 0);
             Quaternion rotation = new Quaternion();
-            Instantiate(enemigo,position,rotation);
-            enemigo.GetComponent<Enemigo>().estaDestruido = false;
-            Debug.Log(enemigo.GetComponent<Enemigo>().estaDestruido);
+            Instantiate(enemigo, position, rotation);
 
 
-            contador++;
         }
-       
-
     }
     
 }
