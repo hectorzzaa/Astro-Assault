@@ -11,12 +11,13 @@ public class Enemigo : MonoBehaviour
 
 
     [SerializeField] private float vida;
-    public bool estaDestruido;
-
+    private GameObject puntos;
     // Start is called before the first frame update
     void Start()
+
     {
-        vida = 1;
+
+       
         
     }
 
@@ -28,14 +29,14 @@ public class Enemigo : MonoBehaviour
 
     public void recibirDaño(int daño)
     {
+
+        
         vida -= daño;
         if (vida == 0)
         {
-            
-            Debug.Log("esta roto");
+
             Destroy(this.gameObject);
-            estaDestruido = true;
-            Debug.Log("He puesto estadestruido en true"+estaDestruido);
+
         }
         
     }
