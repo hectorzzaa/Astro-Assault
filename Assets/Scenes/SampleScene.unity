@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemigo: {fileID: 4795878738527743174, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
-  contador: 0
+  jugador: {fileID: 0}
 --- !u!4 &992062226
 Transform:
   m_ObjectHideFlags: 0

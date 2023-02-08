@@ -8,29 +8,47 @@ public class SpawnPiedra : MonoBehaviour
 
 
     [SerializeField] private GameObject enemigo;
+    [SerializeField] private GameObject jugador;
 
     float timer;
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(enemigo);
+        Vector3 a = this.transform.position;
+
+        movimientoPiedra(a);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 a = this.transform.position;
+       
         timer += Time.deltaTime;
         while (timer>=3F)
         {
             timer = 0;
-            float x = Random.Range(-30F, 30F);
-            Vector2 position = new Vector2(x, 0);
-            Quaternion rotation = new Quaternion();
-            Instantiate(enemigo, position, rotation);
+
+            movimientoPiedra(a);
+
+            
 
 
         }
+
+
+
     }
+
+    private void movimientoPiedra(Vector3 locacion)
+    {
+        float x = Random.Range((locacion.x - 30F), (locacion.x + 30F));
+        float y = Random.Range(locacion.y, (locacion.y + 30F));
+        Vector2 position = new Vector2(x, y);
+        Quaternion rotation = new Quaternion();
+        Instantiate(enemigo, position, rotation);
+    }
+
     
 }

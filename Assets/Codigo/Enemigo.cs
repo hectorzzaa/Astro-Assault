@@ -9,7 +9,7 @@ public class Enemigo : MonoBehaviour
 
 
 
-
+    [SerializeField] private float velocidad;
     [SerializeField] private float vida;
     private GameObject puntos;
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class Enemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector2.down * velocidad * Time.deltaTime);
     }
 
     public void recibirDaño(int daño)
@@ -39,6 +39,17 @@ public class Enemigo : MonoBehaviour
 
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Final"))
+        {
+            Destroy(this.gameObject);
+        }else if (collision.CompareTag("Jugador"))
+        {
+            Debug.Log("Te moriste noob");
+        }
     }
 
 
