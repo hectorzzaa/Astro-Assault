@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64862a25f6c42e84785a7727ea349c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 5
+  velocidad: 8
   "da\xF1o": 0
 --- !u!114 &-1209630156629117599
 MonoBehaviour:
@@ -129,4 +129,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f823b3f9e9a97414384a0bba1472233a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoVida: 2
+  tiempoVida: 8

@@ -8,7 +8,7 @@ public class SpawnPiedra : MonoBehaviour
 
 
     [SerializeField] private GameObject enemigo;
-
+    [SerializeField] private GameObject jugador;
     float timer;
     // Start is called before the first frame update
     void Start()
@@ -23,9 +23,13 @@ public class SpawnPiedra : MonoBehaviour
         timer += Time.deltaTime;
         while (timer>=3F)
         {
+
+            Vector3 position1 = jugador.transform.position;
             timer = 0;
-            float x = Random.Range(-30F, 30F);
-            Vector2 position = new Vector2(x, 0);
+            
+            float x = Random.Range((position1.x - 30F), (position1.x+30F));
+            
+            Vector2 position = new Vector2(x, 12F);
             Quaternion rotation = new Quaternion();
             Instantiate(enemigo, position, rotation);
 
