@@ -20,7 +20,6 @@ public class DisparoJugador : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
-            Debug.Log("He disparado");
             disparar();
 
         }

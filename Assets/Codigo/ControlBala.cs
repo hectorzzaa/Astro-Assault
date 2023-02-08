@@ -9,6 +9,7 @@ public class ControlBala : MonoBehaviour
     [SerializeField] private float daño;
 
 
+
     void Update()
     {
         //le digo que se traslade hacia arriba dependiendo de una velocidad que yo establezco en un metodo en el editor
@@ -18,7 +19,6 @@ public class ControlBala : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Piedra")){
-            Debug.Log("LE DI");
             collision.GetComponent<Enemigo>().recibirDaño(1);
         }
 
