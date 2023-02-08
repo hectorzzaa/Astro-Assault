@@ -23,13 +23,9 @@ public class SpawnPiedra : MonoBehaviour
         timer += Time.deltaTime;
         while (timer>=3F)
         {
-
-            Vector3 position1 = jugador.transform.position;
             timer = 0;
-            
-            float x = Random.Range((position1.x - 30F), (position1.x+30F));
-            
-            Vector2 position = new Vector2(x, 12F);
+            float x = Random.Range(-30F, 30F);
+            Vector2 position = new Vector2(x, 0);
             Quaternion rotation = new Quaternion();
             Instantiate(enemigo, position, rotation);
 
