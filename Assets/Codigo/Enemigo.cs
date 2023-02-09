@@ -46,7 +46,8 @@ public class Enemigo : MonoBehaviour
         if (collision.CompareTag("Final"))
         {
             Destroy(this.gameObject);
-        }else if (collision.CompareTag("Jugador"))
+        }
+        if (collision.CompareTag("Jugador"))
         {
             Debug.Log("Te moriste noob");
         }
