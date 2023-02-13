@@ -6,6 +6,8 @@ public class ControladorJugador : MonoBehaviour
 {
 
     [SerializeField] private float velocidad;
+    [SerializeField] private float xMinimo, xMaximo;
+    [SerializeField] private float yMinimo, yMaximo;
 
     void Start()
     {
@@ -15,6 +17,16 @@ public class ControladorJugador : MonoBehaviour
 
     void Update()
     {
+
+        //establezo un rango de valores
+
+        float x = Mathf.Clamp(transform.position.x,xMinimo,xMaximo);
+        float y = Mathf.Clamp(transform.position.y,yMinimo,yMaximo);
+        transform.position = new Vector3(x,y,0);
+
+
+
+
         
         
         if (Input.GetKey(KeyCode.LeftArrow)||Input.GetKey(KeyCode.A))
@@ -25,18 +37,18 @@ public class ControladorJugador : MonoBehaviour
 
 
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
 
             gameObject.transform.Translate(Vector2.right * (velocidad * Time.deltaTime));
 
 
         }
-        else if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.DownArrow))
         {
-            gameObject.transform.Translate(0, -20F * Time.deltaTime, 0);
+            gameObject.transform.Translate(Vector2.down * (velocidad * Time.deltaTime));
         }
-        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             gameObject.transform.Translate(Vector2.up * (velocidad * Time.deltaTime));
         }

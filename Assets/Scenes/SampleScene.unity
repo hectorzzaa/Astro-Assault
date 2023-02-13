@@ -479,8 +479,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 2e5b48f86d5af2a45a758b5d35286b02, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -526,8 +525,6 @@ MonoBehaviour:
   mesh: {fileID: 2106706101}
   mat:
   - {fileID: 2100000, guid: ff2ce176332a8fe4ba60e785503abfd1, type: 2}
-  - {fileID: 2100000, guid: 5bbecedf1a5350c42aea05bbb201feda, type: 2}
-  - {fileID: 2100000, guid: 1a4d104135101cb45a30ea4adf456257, type: 2}
 --- !u!1001 &2682987461963339477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,17 +536,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: NaveJugador
       objectReference: {fileID: 0}
+    - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
+      propertyPath: xMaximo
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
+      propertyPath: xMinimo
+      value: -36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
+      propertyPath: yMaximo
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
+      propertyPath: yMinimo
+      value: -16
+      objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21
+      value: -1.41
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.22
+      value: -15.93
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_LocalPosition.z
