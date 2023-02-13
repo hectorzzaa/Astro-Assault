@@ -16,7 +16,7 @@ public class ControladorJugador : MonoBehaviour
     void Update()
     {
         
-        gameObject.transform.Translate(Vector2.up * (velocidad * Time.deltaTime));
+        
         if (Input.GetKey(KeyCode.LeftArrow)||Input.GetKey(KeyCode.A))
         {
             //He decidido hacerlo con traslate porque no es necesario que tenga fisicas a la hora de girar o ir hacia abajo
@@ -36,8 +36,9 @@ public class ControladorJugador : MonoBehaviour
         {
             gameObject.transform.Translate(0, -20F * Time.deltaTime, 0);
         }
-        else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
-            gameObject.transform.Translate(Vector2.up*((velocidad+10F) *Time.deltaTime));
+        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            gameObject.transform.Translate(Vector2.up * (velocidad * Time.deltaTime));
         }
     }
 }

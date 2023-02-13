@@ -25,7 +25,7 @@ public class SpawnPiedra : MonoBehaviour
     {
 
         //Me aseguro que el spawn de enemigos siempre este alejado del jugador aunque se mueva hacia delante
-        transform.position = new Vector3(0, (jugador.transform.position.y+20F), transform.position.z);
+        //transform.position = new Vector3(0, (jugador.transform.position.y+20F), transform.position.z);
         Vector3 a = this.transform.position;
        
         timer += Time.deltaTime;
