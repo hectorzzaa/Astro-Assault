@@ -9,6 +9,7 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private float xMinimo, xMaximo;
     [SerializeField] private float yMinimo, yMaximo;
 
+
     void Start()
     {
         gameObject.transform.position = new Vector3(0.19F, -2.58F, 0);
