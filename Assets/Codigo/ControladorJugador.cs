@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ControladorJugador : MonoBehaviour
@@ -10,8 +12,12 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private float yMinimo, yMaximo;
 
 
+
     void Start()
     {
+
+
+
         gameObject.transform.position = new Vector3(0.19F, -2.58F, 0);
     }
 
@@ -25,11 +31,14 @@ public class ControladorJugador : MonoBehaviour
         float y = Mathf.Clamp(transform.position.y,yMinimo,yMaximo);
         transform.position = new Vector3(x,y,0);
 
-
-
-
         
-        
+
+
+
+
+
+
+
         if (Input.GetKey(KeyCode.LeftArrow)||Input.GetKey(KeyCode.A))
         {
             //He decidido hacerlo con traslate porque no es necesario que tenga fisicas a la hora de girar o ir hacia abajo
