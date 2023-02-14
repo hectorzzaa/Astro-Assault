@@ -660,11 +660,11 @@ PrefabInstance:
       objectReference: {fileID: 519420028}
     - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: xMaximo
-      value: 44
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: xMinimo
-      value: -44
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346514, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: yMaximo

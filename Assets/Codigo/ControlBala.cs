@@ -10,13 +10,18 @@ public class ControlBala : MonoBehaviour
 
 
 
-
     void Update()
     {
 
 
+
+
         //le digo que se traslade hacia arriba dependiendo de una velocidad que yo establezco en un metodo en el editor
-        transform.Translate(Vector2.up*velocidad*Time.deltaTime);
+        
+       
+          transform.Translate(Vector2.up * velocidad * Time.deltaTime);
+        
+        
 
 
 
