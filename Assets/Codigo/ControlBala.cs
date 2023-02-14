@@ -10,16 +10,29 @@ public class ControlBala : MonoBehaviour
 
 
 
+
     void Update()
     {
+
+
         //le digo que se traslade hacia arriba dependiendo de una velocidad que yo establezco en un metodo en el editor
         transform.Translate(Vector2.up*velocidad*Time.deltaTime);
+
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Piedra")){
             collision.GetComponent<Enemigo>().recibirDaño(1);
+            Destroy(gameObject);
+        }
+        if (collision.CompareTag("finalBala"))
+        {
+            Debug.Log("final");
+            Destroy(gameObject);
         }
 
     }
