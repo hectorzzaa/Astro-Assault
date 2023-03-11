@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemigoPiedra: {fileID: 4795878738527743174, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
+  enePiedra: {fileID: 0}
 --- !u!1 &1745391236
 GameObject:
   m_ObjectHideFlags: 0

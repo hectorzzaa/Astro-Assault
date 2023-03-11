@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-class Enemigo
+class Enemigo: MonoBehaviour
 {
-    [SerializeField] private GameObject prueba;
 
-    private int vida;
 
-    private string tipoAtaque;
+    [SerializeField] private int vida;
 
-    private Boolean puedeDisparar;
+    [SerializeField] private string tipoAtaque;
+
+    [SerializeField] private int puntos;
+
+    [SerializeField] private Boolean puedeDisparar;
 
 
     public int getVida()
@@ -21,15 +23,25 @@ class Enemigo
     }
     public void setVida(int vida)
     {
-        vida = this.vida;
+        this.vida=vida;
     }
+
+    public int getPuntos()
+    {
+        return puntos;
+    }
+    public void setPuntos(int puntos)
+    {
+        this.puntos = puntos;
+    }
+
     public String getTipoAtaque()
     {
         return tipoAtaque;
     }
     public void setTipoAtaque(String tipoAtaque)
     {
-        tipoAtaque = this.tipoAtaque;
+        this.tipoAtaque=tipoAtaque;
     }
     public Boolean getPuedeDisparar()
     {
@@ -37,7 +49,7 @@ class Enemigo
     }
     public void getPuedeDisparar(Boolean puedeDisparar)
     {
-        puedeDisparar = this.puedeDisparar;
+        this.puedeDisparar = puedeDisparar;
     }
 
 
@@ -51,41 +63,8 @@ class Enemigo
 
     }
 
-    public Enemigo()
-    {
-    }
-
-    public Enemigo(int vida, string tipoAtaque, bool puedeDisparar)
-    {
-        this.vida = vida;
-        this.tipoAtaque = tipoAtaque;
-        this.puedeDisparar = puedeDisparar;
-    }
-
-    public Enemigo(GameObject prueba, int vida, string tipoAtaque, bool puedeDisparar)
-    {
-        this.prueba = prueba;
-        this.vida = vida;
-        this.tipoAtaque = tipoAtaque;
-        this.puedeDisparar = puedeDisparar;
-    }
+    
 }
 
-class EnemigoPiedra : Enemigo
-{
-    public EnemigoPiedra(int vida, string tipoAtaque, bool puedeDisparar)
-    {
-    }
 
-    public override void decirNombre()
-    {
-        Debug.Log("Creo un objeto que es una piedra");
-
-    }
-    public override void OnDestroy()
-    {
-        Debug.Log("Me destruyo pero soy una piedra :DD");
-    }
-
-}
 

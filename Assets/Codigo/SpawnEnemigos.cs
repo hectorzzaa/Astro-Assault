@@ -1,49 +1,63 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemigos : MonoBehaviour
 {
-    [SerializeField] private GameObject enemigoPiedra;
 
-    Enemigo enePiedra = new Enemigo(1,"fisico",false);
+
+
+    [SerializeField] private bool finPiedra;
+    [SerializeField] private EnemigoPiedra enePiedra;
     float timer;
 
 
+    
     void Start()
     {
-        //enePiedra.setObjeto(enemigoPiedra);
+
+
+
+        finPiedra= false;
+        enePiedra.setVida(123);
+        
+        enePiedra.setPuntos(1);
+        
+        enePiedra.setTipoAtaque("mele");
+
+        enePiedra.decirNombre();
+        
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
-        if(!enePiedra.getPuedeDisparar())
-        {
-            Vector3 a = this.transform.position;
-           timer += Time.deltaTime;
-            while (timer >= 3F)
-            {
-                timer = 0;
-
-                movimientoPiedra(a);
-            }
 
 
-
-
-
+        if(!finPiedra) {
+            spawnPiedra();
         }
-
-
-
-
+        else
+        {
+            Debug.Log("fin fase de rocas");
+        }
+        
 
     }
 
 
+    private void spawnPiedra()
+    {
+        Vector3 a = this.transform.position;
+        timer += Time.deltaTime;
+        while (timer >= 3F)
+        {
+            timer = 0;
 
+            movimientoPiedra(a);
+        }
+    }
 
     private void movimientoPiedra(Vector3 locacion)
     {
@@ -51,7 +65,7 @@ public class SpawnEnemigos : MonoBehaviour
         float y = Random.Range(locacion.y, (locacion.y + 30F));
         Vector2 position = new Vector2(x, y);
         Quaternion rotation = new Quaternion();
-        Instantiate(enemigoPiedra, position, rotation);
+        Instantiate(enePiedra, position, rotation);
     }
 
 

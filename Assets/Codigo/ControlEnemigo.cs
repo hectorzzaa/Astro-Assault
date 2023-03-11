@@ -5,8 +5,9 @@ using UnityEngine;
 public class ControlEnemigo : MonoBehaviour
 
 {
-    EnemigoPiedra enePiedra = new EnemigoPiedra(1, "a",false);
-    
+    [SerializeField] private EnemigoPiedra enePiedra;
+    //EnemigoPiedra enePiedra = new EnemigoPiedra(1, "a",false);
+    //public GameObject gameObject;
 
     [SerializeField] private float velocidad;
     [SerializeField] private float vida;
@@ -17,9 +18,11 @@ public class ControlEnemigo : MonoBehaviour
     void Start()
 
     {
-        //enePiedra.setObjeto(enemigoPiedra);
+
         
-        enePiedra.decirNombre();
+        //enePiedra.setObjeto(enemigoPiedra);
+
+       
 
 
     }
@@ -28,10 +31,7 @@ public class ControlEnemigo : MonoBehaviour
     
     void Update()
     {
-        if (!enePiedra.getPuedeDisparar())
-        {
-
-        }
+        
             transform.Translate(Vector2.down * velocidad * Time.deltaTime);
     }
 
@@ -53,8 +53,7 @@ public class ControlEnemigo : MonoBehaviour
     {
 
 
-        if (!enePiedra.getPuedeDisparar())
-        {
+        
             if (collision.CompareTag("Final"))
             {
                 Destroy(this.gameObject);
@@ -65,7 +64,7 @@ public class ControlEnemigo : MonoBehaviour
                 Destroy(this.gameObject);
 
             }
-        }
+        
            
     }
 

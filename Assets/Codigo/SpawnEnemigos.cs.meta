@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - enemigoPiedra: {fileID: 4795878738527743174, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
+  - enePiedra: {fileID: -2143084369266683032, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
