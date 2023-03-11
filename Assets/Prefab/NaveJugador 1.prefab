@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6980930201409346516}
   - component: {fileID: 6980930201409346515}
   - component: {fileID: 6980930201409346514}
-  - component: {fileID: 6980930201409346513}
   - component: {fileID: 2682987461933478686}
   m_Layer: 0
   m_Name: NaveJugador 1
@@ -107,20 +106,6 @@ MonoBehaviour:
   yMaximo: 0
   bala: {fileID: 5786340782487191085, guid: 4f1c9076ffb94724daed9426da13c054, type: 3}
   controladorDisparo: {fileID: 6980930202374705069}
---- !u!114 &6980930201409346513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6980930201409346512}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f145ab5efab864f8387f4e691ea5c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controladorDisparo: {fileID: 6980930202374705069}
-  bala: {fileID: 5786340782487191085, guid: 4f1c9076ffb94724daed9426da13c054, type: 3}
 --- !u!61 &2682987461933478686
 BoxCollider2D:
   m_ObjectHideFlags: 0
