@@ -10,6 +10,9 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private float velocidad;
     [SerializeField] private float xMinimo, xMaximo;
     [SerializeField] private float yMinimo, yMaximo;
+    [SerializeField] private GameObject bala;
+    [SerializeField] private Transform controladorDisparo;
+
 
 
 
@@ -62,5 +65,14 @@ public class ControladorJugador : MonoBehaviour
         {
             gameObject.transform.Translate(Vector2.up * (velocidad * Time.deltaTime));
         }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            disparar();
+
+        }
+    }
+    private void disparar()
+    {
+        Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
     }
 }

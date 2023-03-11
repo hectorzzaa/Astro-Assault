@@ -5,27 +5,34 @@ using UnityEngine;
 public class ControlEnemigo : MonoBehaviour
 
 {
-    Enemigo enemigoPiedra = new Enemigo(1, "a", "piedra");
+    Enemigo enePiedra = new Enemigo(1, "a", "piedra");
     
 
     [SerializeField] private float velocidad;
     [SerializeField] private float vida;
+    [SerializeField] private GameObject enemigoPiedra;
     
     private GameObject puntos;
     // Start is called before the first frame update
     void Start()
 
     {
-        Debug.Log(enemigoPiedra.decirNombre());
+        enePiedra.setObjeto(enemigoPiedra);
+        
+        Debug.Log(enePiedra.decirNombre());
 
 
     }
 
 
-    // Update is called once per frame
+    
     void Update()
     {
-        transform.Translate(Vector2.down * velocidad * Time.deltaTime);
+        if (enePiedra.getTipoEnemigo() == "piedra")
+        {
+
+        }
+            transform.Translate(Vector2.down * velocidad * Time.deltaTime);
     }
 
     public void recibirDaño(int daño)
@@ -44,14 +51,22 @@ public class ControlEnemigo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Final"))
+
+
+        if (enePiedra.getTipoEnemigo() == "piedra")
         {
-            Destroy(this.gameObject);
+            if (collision.CompareTag("Final"))
+            {
+                Destroy(this.gameObject);
+            }
+            if (collision.CompareTag("Jugador"))
+            {
+                Debug.Log("Te moriste noob");
+                Destroy(this.gameObject);
+
+            }
         }
-        if (collision.CompareTag("Jugador"))
-        {
-            Debug.Log("Te moriste noob");
-        }
+           
     }
 
 

@@ -21,18 +21,24 @@ public class SpawnEnemigos : MonoBehaviour
         
         if(enePiedra.getTipoEnemigo()=="piedra")
         {
-
             Vector3 a = this.transform.position;
-
            timer += Time.deltaTime;
             while (timer >= 3F)
             {
                 timer = 0;
 
                 movimientoPiedra(a);
-
             }
+
+
+
+
+
         }
+
+
+
+
 
     }
 
