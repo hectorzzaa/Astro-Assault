@@ -38,10 +38,7 @@ public class SpawnEnemigos : MonoBehaviour
         if(!finPiedra) {
             spawnPiedra();
         }
-        else
-        {
-            Debug.Log("fin fase de rocas");
-        }
+
         
 
     }
