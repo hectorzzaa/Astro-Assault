@@ -21,6 +21,7 @@ public class ControlEnemigo : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -103,7 +104,7 @@ class Enemigo
 
     public string decirNombre()
     {
-        return "se ha creado al objeto" + getTipoEnemigo();
+        return "se ha creado al objeto piedra" + getTipoEnemigo();
     }
     
     
