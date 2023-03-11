@@ -6,20 +6,20 @@ public class SpawnEnemigos : MonoBehaviour
 {
     [SerializeField] private GameObject enemigoPiedra;
 
-    Enemigo enePiedra = new Enemigo(1,"fisico","piedra");
+    Enemigo enePiedra = new Enemigo(1,"fisico",false);
     float timer;
 
 
     void Start()
     {
-        enePiedra.setObjeto(enemigoPiedra);
+        //enePiedra.setObjeto(enemigoPiedra);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(enePiedra.getTipoEnemigo()=="piedra")
+        if(!enePiedra.getPuedeDisparar())
         {
             Vector3 a = this.transform.position;
            timer += Time.deltaTime;

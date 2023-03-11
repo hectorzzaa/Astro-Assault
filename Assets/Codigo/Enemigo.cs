@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,20 +7,14 @@ using UnityEngine;
 class Enemigo
 {
     [SerializeField] private GameObject prueba;
+
     private int vida;
 
     private string tipoAtaque;
 
-    private string tipoEnemigo;
+    private Boolean puedeDisparar;
 
-    public GameObject getObjeto()
-    {
-        return prueba;
-    }
-    public void setObjeto(GameObject prueba)
-    {
-        prueba = this.prueba;
-    }
+
     public int getVida()
     {
         return vida;
@@ -28,48 +23,69 @@ class Enemigo
     {
         vida = this.vida;
     }
-    public string getTipoAtaque()
+    public String getTipoAtaque()
     {
         return tipoAtaque;
     }
-    public void setTipoAtaque(string tipoAtaque)
+    public void setTipoAtaque(String tipoAtaque)
     {
         tipoAtaque = this.tipoAtaque;
     }
-
-    public string getTipoEnemigo()
+    public Boolean getPuedeDisparar()
     {
-        return tipoEnemigo;
+        return puedeDisparar;
     }
-    public void setTipoEnemigo(string tipoEnemigo)
+    public void getPuedeDisparar(Boolean puedeDisparar)
     {
-        tipoEnemigo = this.tipoEnemigo;
+        puedeDisparar = this.puedeDisparar;
+    }
+
+
+    public virtual void OnDestroy()
+    {
+        Debug.Log("Me destruyo pero no tengo identidad");
+    }
+    public virtual void decirNombre()
+    {
+        Debug.Log("Creo un objeto sin identidad :c");
+
     }
 
     public Enemigo()
     {
     }
 
-    public Enemigo(int vida, string tipoAtaque, string tipoEnemigo)
+    public Enemigo(int vida, string tipoAtaque, bool puedeDisparar)
     {
         this.vida = vida;
         this.tipoAtaque = tipoAtaque;
-        this.tipoEnemigo = tipoEnemigo;
+        this.puedeDisparar = puedeDisparar;
     }
 
-    public Enemigo(GameObject prueba, int vida, string tipoAtaque, string tipoEnemigo)
+    public Enemigo(GameObject prueba, int vida, string tipoAtaque, bool puedeDisparar)
     {
         this.prueba = prueba;
         this.vida = vida;
         this.tipoAtaque = tipoAtaque;
-        this.tipoEnemigo = tipoEnemigo;
+        this.puedeDisparar = puedeDisparar;
     }
+}
 
-    public string decirNombre()
+class EnemigoPiedra : Enemigo
+{
+    public EnemigoPiedra(int vida, string tipoAtaque, bool puedeDisparar)
     {
-        return "se ha creado al objeto" + getTipoEnemigo();
     }
 
+    public override void decirNombre()
+    {
+        Debug.Log("Creo un objeto que es una piedra");
+
+    }
+    public override void OnDestroy()
+    {
+        Debug.Log("Me destruyo pero soy una piedra :DD");
+    }
 
 }
 

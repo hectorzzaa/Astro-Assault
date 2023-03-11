@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 4
   vida: 1
+  enemigoPiedra: {fileID: 0}
