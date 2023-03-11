@@ -31,7 +31,7 @@ public class ControlBala : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Piedra")){
-            collision.GetComponent<Enemigo>().recibirDaño(1);
+            collision.GetComponent<ControlEnemigo>().recibirDaño(1);
             Destroy(gameObject);
         }
         if (collision.CompareTag("finalBala"))

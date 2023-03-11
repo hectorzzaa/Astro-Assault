@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo : MonoBehaviour
+public class ControlEnemigo : MonoBehaviour
 
 {
 
@@ -56,4 +56,36 @@ public class Enemigo : MonoBehaviour
 
 
 
+}
+
+
+class Enemigo
+{
+    private int vida;
+
+    private string tipoAtaque;
+
+
+    public int getVida()
+    {
+        return vida;
+    }
+    public void setVida(int vida)
+    {
+        vida = this.vida;
+    }
+    public string getTipoAtaque()
+    {
+        return tipoAtaque;
+    }
+    public void setTipoAtaque(string tipoAtaque)
+    {
+        tipoAtaque = this.tipoAtaque;
+    }
+
+    public Enemigo(int vida, string tipoAtaque)
+    {
+        this.vida = vida;
+        this.tipoAtaque = tipoAtaque;
+    }
 }
