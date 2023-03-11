@@ -5,20 +5,20 @@ using UnityEngine;
 public class ControlEnemigo : MonoBehaviour
 
 {
-
-
-
+    Enemigo enemigoPiedra = new Enemigo(1, "a", "piedra");
+    
 
     [SerializeField] private float velocidad;
     [SerializeField] private float vida;
+    
     private GameObject puntos;
     // Start is called before the first frame update
     void Start()
 
     {
+        Debug.Log(enemigoPiedra.decirNombre());
 
-       
-        
+
     }
 
     // Update is called once per frame
@@ -65,6 +65,8 @@ class Enemigo
 
     private string tipoAtaque;
 
+    private string tipoEnemigo;
+
 
     public int getVida()
     {
@@ -83,9 +85,26 @@ class Enemigo
         tipoAtaque = this.tipoAtaque;
     }
 
-    public Enemigo(int vida, string tipoAtaque)
+    public string getTipoEnemigo()
+    {
+        return tipoEnemigo;
+    }
+    public void setTipoEnemigo(string tipoEnemigo)
+    {
+        tipoEnemigo = this.tipoEnemigo;
+    }
+
+    public Enemigo(int vida, string tipoAtaque, string tipoEnemigo)
     {
         this.vida = vida;
         this.tipoAtaque = tipoAtaque;
+        this.tipoEnemigo = tipoEnemigo;
     }
+
+    public string decirNombre()
+    {
+        return "se ha creado al objeto" + getTipoEnemigo();
+    }
+    
+    
 }
