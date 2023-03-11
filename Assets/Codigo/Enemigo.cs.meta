@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 8b1df535f03ae404a9d7f64f43ce8a23
+guid: 44903129be6a0244c8b4216b587ecd19
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - enemigoPiedra: {fileID: 4795878738527743174, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
