@@ -12,17 +12,18 @@ public class ControlEnemigo : MonoBehaviour
     [SerializeField] private float velocidad;
     [SerializeField] private float vida;
     [SerializeField] private GameObject enemigoPiedra;
+    [SerializeField] private EnemigoNave eneNave;
     
-    private GameObject puntos;
+    //private GameObject puntos;
     // Start is called before the first frame update
     void Start()
 
     {
 
-        
-        //enePiedra.setObjeto(enemigoPiedra);
 
        
+
+
 
 
     }
@@ -31,23 +32,28 @@ public class ControlEnemigo : MonoBehaviour
     
     void Update()
     {
+
         
-            transform.Translate(Vector2.down * velocidad * Time.deltaTime);
+        transform.Translate(Vector2.down * velocidad * Time.deltaTime);
+        
+
+
     }
 
-    public void recibirDaño(int daño)
+    /*public void recibirDaño(int daño)
     {
 
         
         vida -= daño;
         if (vida == 0)
         {
+            Debug.Log("se ha destruido la piedra por un disparo");
 
             Destroy(this.gameObject);
 
         }
         
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

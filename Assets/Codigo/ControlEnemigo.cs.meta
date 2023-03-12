@@ -3,7 +3,10 @@ guid: 57b03d3e4ace7104a89e3796725d9488
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enePiedra: {instanceID: 0}
+  - enemigoPiedra: {instanceID: 0}
+  - eneNave: {fileID: -5187246665409975967, guid: 16f56a74da133db4281d67a058a0536a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

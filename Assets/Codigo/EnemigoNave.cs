@@ -2,31 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class EnemigoPiedra : Enemigo
+ class EnemigoNave : Enemigo
 {
-    //[SerializeField] private GameObject prueba;
-    /*public EnemigoPiedra(int vida, string tipoAtaque, bool puedeDisparar)
-    {
-    }*/
-    [SerializeField] float velocidad;
-    
 
     public override void decirNombre()
     {
+        Debug.Log("Creo un objeto que es una nave Enemiga");
 
-        Debug.Log("Creo un objeto que es una piedra");
-
-    }
-    public void movimiento()
-    {
-        transform.Translate(Vector2.down * velocidad * Time.deltaTime);
     }
 
     private void Update()
     {
         movimiento();
-        Debug.Log(getVida());
     }
+
+
+    public void movimiento()
+    {
+        transform.Translate(Vector2.down * 10 * Time.deltaTime);
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -48,12 +44,6 @@ class EnemigoPiedra : Enemigo
 
     public override void OnDestroy()
     {
-        Debug.Log("Me destruyo pero soy una piedra :DD");
+        Debug.Log("Me destruyo pero soy una nave :DD");
     }
-
-
-
-
-
-
 }

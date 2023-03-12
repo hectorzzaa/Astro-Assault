@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 64862a25f6c42e84785a7727ea349c34
+guid: 38a6e04ca1a5fc3459c10cb8f324a27c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - enePiedra: {fileID: -2143084369266683032, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -63,7 +63,21 @@ class Enemigo: MonoBehaviour
 
     }
 
-    
+    public virtual void recibirDaño(int daño)
+    {
+        int vida = getVida();
+        Debug.Log(vida);
+
+        vida -= daño;
+        if (vida == 0)
+        {
+            Debug.Log("se ha destruido el objeto por un disparo");
+
+            Destroy(this.gameObject);
+
+        }
+
+    }
 }
 
 

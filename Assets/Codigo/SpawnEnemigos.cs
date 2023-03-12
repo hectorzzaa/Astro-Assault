@@ -10,6 +10,7 @@ public class SpawnEnemigos : MonoBehaviour
 
     [SerializeField] private bool finPiedra;
     [SerializeField] private EnemigoPiedra enePiedra;
+    [SerializeField] private EnemigoNave eneNave;
     float timer;
 
 
@@ -17,28 +18,36 @@ public class SpawnEnemigos : MonoBehaviour
     void Start()
     {
 
+        
 
+        eneNave.setVida(1);
 
-        finPiedra= false;
-        enePiedra.setVida(123);
+        finPiedra = false;
+     
         
         enePiedra.setPuntos(1);
         
         enePiedra.setTipoAtaque("mele");
 
         enePiedra.decirNombre();
-        
+
+        eneNave.decirNombre();
+
+
+
+
+
     }
 
 
     void Update()
     {
+        spawnNave();
 
-
-        if(!finPiedra) {
+        if (!finPiedra) {
             spawnPiedra();
         }
-
+        
         
 
     }
@@ -53,6 +62,21 @@ public class SpawnEnemigos : MonoBehaviour
             timer = 0;
 
             movimientoPiedra(a);
+        }
+    }
+    private void spawnNave()
+    {
+        Vector3 a = this.transform.position;
+        timer += Time.deltaTime;
+        while (timer >= 3F)
+        {
+            timer = 0;
+            float x = 0;
+            float y = 18;
+            Vector2 position = new Vector2(x, y);
+            Quaternion rotation = new Quaternion();
+            Instantiate(eneNave, position, rotation);
+
         }
     }
 

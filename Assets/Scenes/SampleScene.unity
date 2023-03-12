@@ -283,8 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1df535f03ae404a9d7f64f43ce8a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemigoPiedra: {fileID: 4795878738527743174, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
-  enePiedra: {fileID: 0}
+  finPiedra: 0
+  enePiedra: {fileID: -2143084369266683032, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
+  eneNave: {fileID: -5187246665409975967, guid: 16f56a74da133db4281d67a058a0536a, type: 3}
 --- !u!1 &1745391236
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,11 +681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.2
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.8
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 6980930201409346516, guid: e4a1b6bafcb11a24fa277ae88f87e28e, type: 3}
       propertyPath: m_LocalPosition.z
