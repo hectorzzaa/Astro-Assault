@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-class Enemigo: MonoBehaviour
+ class  Enemigo: MonoBehaviour
 {
 
 
@@ -15,6 +16,8 @@ class Enemigo: MonoBehaviour
     [SerializeField] private int puntos;
 
     [SerializeField] private Boolean puedeDisparar;
+    [SerializeField] private int puntosTotal;
+    private Text textoPuntos;
 
 
     public int getVida()
@@ -51,6 +54,14 @@ class Enemigo: MonoBehaviour
     {
         this.puedeDisparar = puedeDisparar;
     }
+    public int getPuntosTotal()
+    {
+        return puntosTotal;
+    }
+    public void setPuntosTotal(int puntosTotal)
+    {
+        this.puntosTotal = puntosTotal;
+    }
 
 
     public virtual void OnDestroy()
@@ -66,7 +77,7 @@ class Enemigo: MonoBehaviour
     public virtual void recibirDaño(int daño)
     {
         int vida = getVida();
-        Debug.Log(vida);
+
 
         vida -= daño;
         if (vida == 0)
@@ -77,7 +88,20 @@ class Enemigo: MonoBehaviour
 
         }
 
+
     }
+    public void gestionarPuntos(int puntosRecibidos)
+    {
+        int puntos = 0;
+
+        puntos = puntos + puntosRecibidos;
+
+        Debug.Log("Puntaje: "+ puntos.ToString());
+
+
+
+    }
+
 }
 
 

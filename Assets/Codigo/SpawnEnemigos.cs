@@ -42,7 +42,7 @@ public class SpawnEnemigos : MonoBehaviour
 
     void Update()
     {
-        spawnNave();
+        //spawnNave();
 
         if (!finPiedra) {
             spawnPiedra();

@@ -42,6 +42,8 @@ public class ControlBala : MonoBehaviour
         if (collision.CompareTag("Piedra"))
         {
             collision.GetComponent<EnemigoPiedra>().recibirDaño(1);
+
+
             Destroy(gameObject);
         }
         if (collision.CompareTag("finalBala"))

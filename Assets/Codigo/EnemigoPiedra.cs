@@ -19,13 +19,17 @@ class EnemigoPiedra : Enemigo
     }
     public void movimiento()
     {
+
         transform.Translate(Vector2.down * velocidad * Time.deltaTime);
     }
 
     private void Update()
     {
+
+       
+
         movimiento();
-        Debug.Log(getVida());
+        //Debug.Log(getVida());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,6 +38,7 @@ class EnemigoPiedra : Enemigo
 
         if (collision.CompareTag("Final"))
         {
+            gestionarPuntos(getPuntos());
             Destroy(this.gameObject);
         }
         if (collision.CompareTag("Jugador"))
@@ -49,9 +54,17 @@ class EnemigoPiedra : Enemigo
     public override void OnDestroy()
     {
         Debug.Log("Me destruyo pero soy una piedra :DD");
+        elevarContador(getPuntos());
+       
     }
 
-
+    public void elevarContador(int puntosEnemigo)
+    {
+        int puntosElevados=getPuntosTotal();
+        puntosElevados = puntosElevados + puntosEnemigo;
+        Debug.Log("Puntuacion: " + puntosElevados);
+        //textoPuntos.text = "Puntuacion: " + puntos.ToString();
+    }
 
 
 

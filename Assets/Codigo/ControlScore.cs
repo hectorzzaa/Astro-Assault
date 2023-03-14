@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class ControlScore : MonoBehaviour
 {
+    [SerializeField] EnemigoPiedra enemigoPiedra;
     private Text textoPuntos;
+    int puntos;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +17,14 @@ public class ControlScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //elevarContador(enemigoPiedra.getPuntos());
     }
 
-
-    public void elevarContador(int punto)
+   
+    /*public void elevarContador(int puntosEnemigo)
     {
-        Debug.Log("Puntuacion: "+punto);
-        textoPuntos.text = "Puntuacion: " + punto.ToString();
-    }
+        puntos = puntos + puntosEnemigo;
+        Debug.Log("Puntuacion: "+ puntos);
+        //textoPuntos.text = "Puntuacion: " + puntos.ToString();
+    }*/
 }
