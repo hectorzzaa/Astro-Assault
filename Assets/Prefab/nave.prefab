@@ -103,6 +103,9 @@ MonoBehaviour:
   tipoAtaque: disparo
   puntos: 1
   puedeDisparar: 1
+  puntosTotal: 0
+  id: 0
+  velocidad: 10
 --- !u!61 &3002460268799483801
 BoxCollider2D:
   m_ObjectHideFlags: 0

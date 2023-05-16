@@ -139,5 +139,8 @@ MonoBehaviour:
   vida: 1
   tipoAtaque: mele
   puntos: 1
-  puedeDisparar: 0
+  puedeDisparar: 1
+  id: 0
+  puntaje: {fileID: 0}
   velocidad: 4
+  cantidadPuntos: 1

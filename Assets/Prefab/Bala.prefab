@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5555289189711450236}
   m_Layer: 0
   m_Name: Bala
-  m_TagString: Untagged
+  m_TagString: bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5786340782487191085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.354, y: 2.393, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.7719, y: -0.7683, z: 2}
+  m_LocalScale: {x: 3.058147, y: 2.591734, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,3 +116,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 25
   "da\xF1o": 0
+  cantidadPuntos: 10
+  puntaje: {fileID: 0}

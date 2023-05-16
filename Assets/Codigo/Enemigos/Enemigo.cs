@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +14,30 @@ using UnityEngine.UI;
 
     [SerializeField] private string tipoAtaque;
 
-    [SerializeField] private int puntos;
+    [SerializeField]
+    private int puntos;
 
     [SerializeField] private Boolean puedeDisparar;
-    [SerializeField] private int puntosTotal;
-    private Text textoPuntos;
+
+    [SerializeField] private int id;
+
+
+    [SerializeField] private TextMeshProUGUI textoPuntos;
+    [SerializeField] private Puntaje puntaje;
+
+
+    public void SetTextoPuntos(TextMeshProUGUI texto)
+    {
+        textoPuntos = texto;
+    }
+    public void SetPuntos(Puntaje punto)
+    {
+        puntaje = punto;
+    }
+    public Puntaje getPuntaje()
+    {
+        return puntaje;
+    }
 
 
     public int getVida()
@@ -54,14 +74,7 @@ using UnityEngine.UI;
     {
         this.puedeDisparar = puedeDisparar;
     }
-    public int getPuntosTotal()
-    {
-        return puntosTotal;
-    }
-    public void setPuntosTotal(int puntosTotal)
-    {
-        this.puntosTotal = puntosTotal;
-    }
+   
 
 
     public virtual void OnDestroy()
@@ -101,6 +114,11 @@ using UnityEngine.UI;
 
 
     }
+
+
+
+
+
 
 }
 

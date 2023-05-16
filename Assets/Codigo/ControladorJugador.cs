@@ -70,6 +70,7 @@ public class ControladorJugador : MonoBehaviour
             disparar();
 
         }
+        
     }
     private void disparar()
     {

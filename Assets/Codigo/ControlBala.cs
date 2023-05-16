@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ControlBala : MonoBehaviour
 {
-
+   
     [SerializeField] private float velocidad;
     [SerializeField] private float daño;
 
+    [SerializeField] private float cantidadPuntos;
+    
 
-
+    int prueba = 0;
     void Update()
     {
 
@@ -20,8 +23,10 @@ public class ControlBala : MonoBehaviour
         
        
           transform.Translate(Vector2.up * velocidad * Time.deltaTime);
-        
-        
+
+        prueba++;
+
+       
 
 
 
@@ -42,7 +47,9 @@ public class ControlBala : MonoBehaviour
         if (collision.CompareTag("Piedra"))
         {
             collision.GetComponent<EnemigoPiedra>().recibirDaño(1);
-
+            //puntaje.SumarPuntos(cantidadPuntos);
+            //controlPuntaje.raiseScore(1);
+           // GetComponent<ControlPuntaje>().raiseScore(1);
 
             Destroy(gameObject);
         }

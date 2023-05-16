@@ -9,6 +9,7 @@ TagManager:
   - Final
   - finalBala
   - nave
+  - bala
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - jugadorMinimapa
   m_SortingLayers:
   - name: Default
     uniqueID: 0

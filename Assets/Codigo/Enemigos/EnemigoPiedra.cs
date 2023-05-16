@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 class EnemigoPiedra : Enemigo
@@ -8,7 +9,13 @@ class EnemigoPiedra : Enemigo
     /*public EnemigoPiedra(int vida, string tipoAtaque, bool puedeDisparar)
     {
     }*/
+    
     [SerializeField] float velocidad;
+    [SerializeField]
+    private float cantidadPuntos;
+    [SerializeField]
+
+
     
 
     public override void decirNombre()
@@ -38,7 +45,7 @@ class EnemigoPiedra : Enemigo
 
         if (collision.CompareTag("Final"))
         {
-            gestionarPuntos(getPuntos());
+            //gestionarPuntos(getPuntos());
             Destroy(this.gameObject);
         }
         if (collision.CompareTag("Jugador"))
@@ -47,6 +54,13 @@ class EnemigoPiedra : Enemigo
             Destroy(this.gameObject);
 
         }
+        if (collision.CompareTag("bala"))
+        {
+            Debug.Log("te dio una bala");
+            getPuntaje().SumarPuntos(1);
+
+        }
+
 
 
     }
@@ -54,15 +68,20 @@ class EnemigoPiedra : Enemigo
     public override void OnDestroy()
     {
         Debug.Log("Me destruyo pero soy una piedra :DD");
-        elevarContador(getPuntos());
+       // elevarContador(1);
        
     }
 
     public void elevarContador(int puntosEnemigo)
     {
-        int puntosElevados=getPuntosTotal();
-        puntosElevados = puntosElevados + puntosEnemigo;
-        Debug.Log("Puntuacion: " + puntosElevados);
+        // int puntosElevados=getPuntosTotal();
+
+        Debug.Log(getPuntos()+puntosEnemigo);
+        setPuntos(getPuntos() + puntosEnemigo);
+        Debug.Log("puntos:" + getPuntos());
+        this.setTipoAtaque("uwu");
+
+        //GetComponent<ControlPuntaje>().raiseScore(1);
         //textoPuntos.text = "Puntuacion: " + puntos.ToString();
     }
 

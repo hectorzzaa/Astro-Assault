@@ -1,31 +1,34 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnEnemigos : MonoBehaviour
 {
 
 
-
+    [SerializeField] private Puntaje puntaje;
     [SerializeField] private bool finPiedra;
     [SerializeField] private EnemigoPiedra enePiedra;
     [SerializeField] private EnemigoNave eneNave;
+    /*[SerializeField]
+    private Puntaje puntaje;*/
     float timer;
 
 
     
     void Start()
     {
-
         
 
-        eneNave.setVida(1);
+
+        /*eneNave.setVida(1);
 
         finPiedra = false;
      
         
-        enePiedra.setPuntos(1);
+        //enePiedra.setPuntos(1);
         
         enePiedra.setTipoAtaque("mele");
 
@@ -33,16 +36,18 @@ public class SpawnEnemigos : MonoBehaviour
 
         eneNave.decirNombre();
 
+        //enePiedra.setPuntaje( puntaje);*/
 
-
-
+        enePiedra.getPuedeDisparar(true);
+       
+        enePiedra.SetPuntos(puntaje);
 
     }
 
 
     void Update()
     {
-        //spawnNave();
+        spawnNave();
 
         if (!finPiedra) {
             spawnPiedra();
