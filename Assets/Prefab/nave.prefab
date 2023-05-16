@@ -101,11 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 1
   tipoAtaque: disparo
-  puntos: 1
+  puntos: 10
   puedeDisparar: 1
-  puntosTotal: 0
   id: 0
-  velocidad: 10
+  puntaje: {fileID: 0}
 --- !u!61 &3002460268799483801
 BoxCollider2D:
   m_ObjectHideFlags: 0

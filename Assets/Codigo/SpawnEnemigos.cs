@@ -40,7 +40,9 @@ public class SpawnEnemigos : MonoBehaviour
 
         enePiedra.getPuedeDisparar(true);
        
-        enePiedra.SetPuntos(puntaje);
+        enePiedra.SetClasePuntos(puntaje);
+
+        eneNave.SetClasePuntos(puntaje);
 
     }
 

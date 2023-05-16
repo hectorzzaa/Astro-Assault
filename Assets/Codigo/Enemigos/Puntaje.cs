@@ -32,8 +32,8 @@ public class Puntaje : MonoBehaviour
     public void SumarPuntos(float puntosEntarda)
     {
         
-        puntos = puntosEntarda+puntos;
-        texto.text =texto.text+ puntos.ToString("0");
+        puntos += puntosEntarda;
+        texto.text ="puntos: "+ puntos.ToString("0");
         Debug.Log(texto.text);
     }
 

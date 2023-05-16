@@ -15,22 +15,19 @@ using UnityEngine.UI;
     [SerializeField] private string tipoAtaque;
 
     [SerializeField]
-    private int puntos;
+    private float puntos;
 
     [SerializeField] private Boolean puedeDisparar;
 
     [SerializeField] private int id;
 
 
-    [SerializeField] private TextMeshProUGUI textoPuntos;
+
     [SerializeField] private Puntaje puntaje;
 
 
-    public void SetTextoPuntos(TextMeshProUGUI texto)
-    {
-        textoPuntos = texto;
-    }
-    public void SetPuntos(Puntaje punto)
+   
+    public void SetClasePuntos(Puntaje punto)
     {
         puntaje = punto;
     }
@@ -49,11 +46,11 @@ using UnityEngine.UI;
         this.vida=vida;
     }
 
-    public int getPuntos()
+    public float getPuntos()
     {
         return puntos;
     }
-    public void setPuntos(int puntos)
+    public void setPuntos(float puntos)
     {
         this.puntos = puntos;
     }

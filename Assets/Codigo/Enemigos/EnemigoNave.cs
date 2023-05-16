@@ -34,8 +34,14 @@ using UnityEngine;
         }
         if (collision.CompareTag("Jugador"))
         {
-            Debug.Log("Te moriste noob");
+
             Destroy(this.gameObject);
+
+        }
+        if (collision.CompareTag("bala"))
+        {
+           
+            getPuntaje().SumarPuntos(getPuntos());
 
         }
 

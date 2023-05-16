@@ -57,7 +57,7 @@ class EnemigoPiedra : Enemigo
         if (collision.CompareTag("bala"))
         {
             Debug.Log("te dio una bala");
-            getPuntaje().SumarPuntos(1);
+            getPuntaje().SumarPuntos(getPuntos());
 
         }
 
