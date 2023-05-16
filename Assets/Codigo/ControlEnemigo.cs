@@ -11,7 +11,6 @@ public class ControlEnemigo : MonoBehaviour
 
     [SerializeField] private float velocidad;
     [SerializeField] private float vida;
-    [SerializeField] private GameObject enemigoPiedra;
     [SerializeField] private EnemigoNave eneNave;
     
     //private GameObject puntos;

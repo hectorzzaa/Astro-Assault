@@ -59,7 +59,8 @@ class EnemigoPiedra : Enemigo
            
             //getPuntaje().SumarPuntos(getPuntos());
 
-            getHud().SumarPuntos(getPuntos());
+            //getHud().SumarPuntos(getPuntos());
+            GameManager.Instance.SumarPuntos(getPuntos());
 
         }
 
@@ -74,18 +75,7 @@ class EnemigoPiedra : Enemigo
        
     }
 
-    public void elevarContador(int puntosEnemigo)
-    {
-        // int puntosElevados=getPuntosTotal();
-
-        Debug.Log(getPuntos()+puntosEnemigo);
-        setPuntos(getPuntos() + puntosEnemigo);
-        Debug.Log("puntos:" + getPuntos());
-        this.setTipoAtaque("uwu");
-
-        //GetComponent<ControlPuntaje>().raiseScore(1);
-        //textoPuntos.text = "Puntuacion: " + puntos.ToString();
-    }
+   
 
 
 

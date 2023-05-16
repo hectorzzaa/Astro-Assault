@@ -12,7 +12,7 @@ public class ControlBala : MonoBehaviour
     [SerializeField] private float cantidadPuntos;
     
 
-    int prueba = 0;
+
     void Update()
     {
 
@@ -24,7 +24,7 @@ public class ControlBala : MonoBehaviour
        
           transform.Translate(Vector2.up * velocidad * Time.deltaTime);
 
-        prueba++;
+
 
        
 

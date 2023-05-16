@@ -41,8 +41,7 @@ using UnityEngine;
         if (collision.CompareTag("bala"))
         {
 
-            getHud().SumarPuntos(
-                getPuntos());
+            GameManager.Instance.SumarPuntos(getPuntos());
 
         }
 
