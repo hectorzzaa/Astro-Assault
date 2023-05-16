@@ -40,8 +40,9 @@ using UnityEngine;
         }
         if (collision.CompareTag("bala"))
         {
-           
-            getPuntaje().SumarPuntos(getPuntos());
+
+            getHud().SumarPuntos(
+                getPuntos());
 
         }
 

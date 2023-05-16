@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class SpawnEnemigos : MonoBehaviour
 {
-
-
-    [SerializeField] private Puntaje puntaje;
+    [SerializeField] private HUD hud;
     [SerializeField] private bool finPiedra;
     [SerializeField] private EnemigoPiedra enePiedra;
     [SerializeField] private EnemigoNave eneNave;
@@ -39,10 +37,13 @@ public class SpawnEnemigos : MonoBehaviour
         //enePiedra.setPuntaje( puntaje);*/
 
         enePiedra.getPuedeDisparar(true);
-       
-        enePiedra.SetClasePuntos(puntaje);
 
-        eneNave.SetClasePuntos(puntaje);
+        //enePiedra.SetClasePuntos(puntaje);
+
+        //eneNave.SetClasePuntos(puntaje);
+
+        enePiedra.setHud(hud);
+        eneNave.setHud(hud);
 
     }
 

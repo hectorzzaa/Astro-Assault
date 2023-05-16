@@ -50,14 +50,16 @@ class EnemigoPiedra : Enemigo
         }
         if (collision.CompareTag("Jugador"))
         {
-            Debug.Log("Te moriste noob");
+            
             Destroy(this.gameObject);
 
         }
         if (collision.CompareTag("bala"))
         {
-            Debug.Log("te dio una bala");
-            getPuntaje().SumarPuntos(getPuntos());
+           
+            //getPuntaje().SumarPuntos(getPuntos());
+
+            getHud().SumarPuntos(getPuntos());
 
         }
 

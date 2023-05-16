@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControladorJugador : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private float yMinimo, yMaximo;
     [SerializeField] private GameObject bala;
     [SerializeField] private Transform controladorDisparo;
-
-
+    [SerializeField] private HUD hud;
+    [SerializeField] private int vidas = 3;
 
 
     void Start()
@@ -38,7 +39,7 @@ public class ControladorJugador : MonoBehaviour
 
 
 
-
+       
 
 
 
@@ -70,9 +71,29 @@ public class ControladorJugador : MonoBehaviour
             disparar();
 
         }
+
+
+
         
     }
-    private void disparar()
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Piedra")|| collision.CompareTag("nave"))
+        {
+            vidas -= 1;
+            if (vidas == 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+            hud.RecibirDaño(vidas);
+        }
+    
+    
+    }
+
+        private void disparar()
     {
         Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
     }

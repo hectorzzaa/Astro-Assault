@@ -23,18 +23,19 @@ using UnityEngine.UI;
 
 
 
-    [SerializeField] private Puntaje puntaje;
-
-
+  
+    [SerializeField] HUD hud;
    
-    public void SetClasePuntos(Puntaje punto)
+    public void setHud(HUD hud)
     {
-        puntaje = punto;
+        this.hud = hud;
     }
-    public Puntaje getPuntaje()
+    public HUD getHud()
     {
-        return puntaje;
+        return hud;
     }
+
+
 
 
     public int getVida()
