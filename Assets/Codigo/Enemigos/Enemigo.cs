@@ -22,22 +22,6 @@ using UnityEngine.UI;
     [SerializeField] private int id;
 
 
-
-  
-    [SerializeField] HUD hud;
-   
-    public void setHud(HUD hud)
-    {
-        this.hud = hud;
-    }
-    public HUD getHud()
-    {
-        return hud;
-    }
-
-
-
-
     public int getVida()
     {
         return vida;
@@ -101,17 +85,7 @@ using UnityEngine.UI;
 
 
     }
-    public void gestionarPuntos(int puntosRecibidos)
-    {
-        int puntos = 0;
-
-        puntos = puntos + puntosRecibidos;
-
-        Debug.Log("Puntaje: "+ puntos.ToString());
-
-
-
-    }
+   
 
 
 

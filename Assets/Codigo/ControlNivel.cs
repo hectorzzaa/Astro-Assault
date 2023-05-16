@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class SpawnEnemigos : MonoBehaviour
+public class ControlNivel : MonoBehaviour
 {
     [SerializeField] private HUD hud;
     [SerializeField] private bool finPiedra;
@@ -42,8 +42,7 @@ public class SpawnEnemigos : MonoBehaviour
 
         //eneNave.SetClasePuntos(puntaje);
 
-        enePiedra.setHud(hud);
-        eneNave.setHud(hud);
+       
 
     }
 

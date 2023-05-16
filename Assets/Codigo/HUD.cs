@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] private GameObject[] Vidas;
-     //private TextMeshPro texto;
+   
+
+    public GameObject[] Vidas;
+    
     [SerializeField] private TextMeshProUGUI texto;
-    private float puntos;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,19 +21,19 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //texto.text = GameManager.Instance.PuntosTotales.ToString();
     }
 
-    public void RecibirDaño(int numVida)
+    public void DescativarVidas(int numVida)
     {
         
         Vidas[numVida].SetActive(false);
     }
-    public void SumarPuntos(float puntosEntarda)
+    public void ActualziarPuntos(float puntos)
     {
-
-        puntos += puntosEntarda;
-        texto.text = "puntos: " + puntos.ToString("0");
-        Debug.Log(texto.text);
+        texto.text ="Puntos: "+ puntos.ToString();
     }
+
+
+
 }
