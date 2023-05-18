@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1df535f03ae404a9d7f64f43ce8a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  salud: {fileID: 8268964456771203925, guid: 2392fffb3d6b4c545b4d010f2f4abad2, type: 3}
   hud: {fileID: 1594539604}
   finPiedra: 0
   enePiedra: {fileID: -2143084369266683032, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 1594539604}
+  vidas: 3
 --- !u!4 &2083462203
 Transform:
   m_ObjectHideFlags: 0

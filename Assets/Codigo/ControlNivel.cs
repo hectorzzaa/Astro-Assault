@@ -3,19 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ControlNivel : MonoBehaviour
 {
+
+
+    [SerializeField] private GameObject salud;
     [SerializeField] private HUD hud;
     [SerializeField] private bool finPiedra;
     [SerializeField] private EnemigoPiedra enePiedra;
     [SerializeField] private EnemigoNave eneNave;
+    
     /*[SerializeField]
     private Puntaje puntaje;*/
     float timer;
+    float temporizadorVida;
 
 
-    
+
     void Start()
     {
         
@@ -50,7 +56,7 @@ public class ControlNivel : MonoBehaviour
     void Update()
     {
         spawnNave();
-
+        spawVida();
         if (!finPiedra) {
             spawnPiedra();
         }
@@ -58,7 +64,20 @@ public class ControlNivel : MonoBehaviour
         
 
     }
+    private void spawVida()
+    {
+        Vector3 a = this.transform.position;
 
+       temporizadorVida=Time.deltaTime;
+
+        while (temporizadorVida > 10&&GameManager.Instance.vidas<3)
+        {
+            temporizadorVida = 0;
+            MovimientoVida(a);
+        }
+
+
+    }
 
     private void spawnPiedra()
     {
@@ -94,6 +113,14 @@ public class ControlNivel : MonoBehaviour
         Vector2 position = new Vector2(x, y);
         Quaternion rotation = new Quaternion();
         Instantiate(enePiedra, position, rotation);
+    }
+    private void MovimientoVida(Vector3 locacion)
+    {
+        float x = Random.Range((locacion.x - 30F), (locacion.x + 30F));
+        float y = Random.Range(locacion.y, (locacion.y + 30F));
+        Vector2 position = new Vector2(x, y);
+        Quaternion rotation = new Quaternion();
+        Instantiate(salud, position, rotation);
     }
 
 
