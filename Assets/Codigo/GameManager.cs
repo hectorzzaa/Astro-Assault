@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    //mwetodo para sumar puntos al HUD
     public void SumarPuntos(float puntosEntarda)
     {
 
