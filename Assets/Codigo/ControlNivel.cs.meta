@@ -4,9 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - salud: {instanceID: 0}
+  - hud: {instanceID: 0}
   - enePiedra: {fileID: -2143084369266683032, guid: 767f37ca15d59fd4a8f50fedc29c7e99, type: 3}
   - eneNave: {instanceID: 0}
-  - puntaje: {fileID: 585383630166036639, guid: 12dba1220cd6be8488114ef03d52e707, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

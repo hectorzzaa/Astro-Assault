@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private float puntosTotales;
     [SerializeField] private HUD hud;
     [SerializeField] private int vidas = 3;
+    [SerializeField] public int vidas = 3;
     void Awake()
     {
         if (Instance == null)
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 
 
     //mwetodo para sumar puntos al HUD
+
     public void SumarPuntos(float puntosEntarda)
     {
 
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         hud.ActualziarPuntos(puntosTotales);
     }
-    public void RecibirDaño()
+    public void RecibirDaï¿½o()
     {
 
         vidas-= 1;
@@ -46,4 +48,8 @@ public class GameManager : MonoBehaviour
 
 
 
+    public void CargarEscena(string nombreScena)
+    {
+        SceneManager.LoadScene(nombreScena);
+    }
 }
