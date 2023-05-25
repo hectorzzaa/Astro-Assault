@@ -47,9 +47,7 @@ public class ControlBala : MonoBehaviour
         if (collision.CompareTag("Piedra"))
         {
             collision.GetComponent<EnemigoPiedra>().recibirDaño(1);
-            //puntaje.SumarPuntos(cantidadPuntos);
-            //controlPuntaje.raiseScore(1);
-           // GetComponent<ControlPuntaje>().raiseScore(1);
+           
 
             Destroy(gameObject);
         }

@@ -29,6 +29,11 @@ public class HUD : MonoBehaviour
         
         Vidas[numVida].SetActive(false);
     }
+    public void SumarVidas(int numVida)
+    {
+
+        Vidas[numVida].SetActive(true);
+    }
     public void ActualziarPuntos(float puntos)
     {
         texto.text ="Puntos: "+ puntos.ToString();

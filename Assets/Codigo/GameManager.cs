@@ -45,7 +45,15 @@ public class GameManager : MonoBehaviour
         }
         hud.DescativarVidas(vidas);
     }
-
+    public void RecuperarVidas()
+    {
+        if(vidas==3) {
+            return;
+        }
+       
+        hud.SumarVidas(vidas);
+        vidas += 1;
+    }
 
 
     public void CargarEscena(string nombreScena)

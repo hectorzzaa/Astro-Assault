@@ -38,6 +38,8 @@ class EnemigoPiedra : Enemigo
         movimiento();
         //Debug.Log(getVida());
     }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

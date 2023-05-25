@@ -47,16 +47,17 @@ public class ControlNivel : MonoBehaviour
         //enePiedra.SetClasePuntos(puntaje);
 
         //eneNave.SetClasePuntos(puntaje);
+      
 
-       
 
     }
 
 
     void Update()
     {
-        spawnNave();
         spawVida();
+        spawnNave();
+        
         if (!finPiedra) {
             spawnPiedra();
         }
@@ -68,12 +69,13 @@ public class ControlNivel : MonoBehaviour
     {
         Vector3 a = this.transform.position;
 
-       temporizadorVida=Time.deltaTime;
+       temporizadorVida+=Time.deltaTime;
 
-        while (temporizadorVida > 10&&GameManager.Instance.vidas<3)
+        while (temporizadorVida >= 3)
         {
             temporizadorVida = 0;
             MovimientoVida(a);
+            
         }
 
 
@@ -88,6 +90,7 @@ public class ControlNivel : MonoBehaviour
             timer = 0;
 
             movimientoPiedra(a);
+
         }
     }
     private void spawnNave()
