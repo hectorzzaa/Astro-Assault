@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public float PuntosTotales { get { return puntosTotales; } }
     private float puntosTotales;
     [SerializeField] private HUD hud;
-    [SerializeField] private int vidas = 3;
+
     [SerializeField] public int vidas = 3;
     void Awake()
     {
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         hud.ActualziarPuntos(puntosTotales);
     }
-    public void RecibirDa�o()
+    public void RecibirDaño()
     {
 
         vidas-= 1;
