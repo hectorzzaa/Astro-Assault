@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2122392952, guid: 0c4cfcee23e21d3469e7ebe2f19762a2, type: 3}
+  m_Sprite: {fileID: 415353634, guid: f891a256ee71a7f41aa43ee9f2ff1afd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,10 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c77640c45c5e34f83a12df66e3c50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 1
+  vida: 2
   tipoAtaque: mele
   puntos: 1
   puedeDisparar: 1
-  id: 0
   velocidad: 4
-  cantidadPuntos: 1

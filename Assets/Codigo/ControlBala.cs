@@ -16,41 +16,27 @@ public class ControlBala : MonoBehaviour
     void Update()
     {
 
-
-
-
-        //le digo que se traslade hacia arriba dependiendo de una velocidad que yo establezco en un metodo en el editor
-        
-       
+        //se hace que se traslade hacia arriba dependiendo de una velocidad establecida atraves del editor
+   
           transform.Translate(Vector2.up * velocidad * Time.deltaTime);
-
-
-
-       
-
-
-
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.CompareTag("Piedra")){
-            collision.GetComponent<ControlEnemigo>().recibirDaño(1);
-            Destroy(gameObject);
-        }*/
+        //Consigo extactamente cual de los objetos instanciados es y llamo a su funcion de recibir daño
         if (collision.CompareTag("nave"))
         {
             collision.GetComponent<EnemigoNave>().recibirDaño(1);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         if (collision.CompareTag("Piedra"))
         {
             collision.GetComponent<EnemigoPiedra>().recibirDaño(1);
-           
-
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+        //Hay un objeto al final de juego que sirve como tope, al llegar a él se destruye la barra
+
         if (collision.CompareTag("finalBala"))
         {
             Debug.Log("final");

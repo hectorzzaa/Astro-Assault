@@ -5,11 +5,7 @@ using UnityEngine;
  class EnemigoNave : Enemigo
 {
 
-    public override void decirNombre()
-    {
-        Debug.Log("Creo un objeto que es una nave Enemiga");
-
-    }
+   
 
     private void Update()
     {
@@ -23,33 +19,7 @@ using UnityEngine;
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    
 
-
-
-        if (collision.CompareTag("Final"))
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.CompareTag("Jugador"))
-        {
-
-            Destroy(this.gameObject);
-
-        }
-        if (collision.CompareTag("bala"))
-        {
-
-            GameManager.Instance.SumarPuntos(getPuntos());
-
-        }
-
-
-    }
-
-    public override void OnDestroy()
-    {
-        Debug.Log("Me destruyo pero soy una nave :DD");
-    }
+   
 }

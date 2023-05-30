@@ -7,18 +7,10 @@ public class ControlVida : MonoBehaviour
 
     public float velocidad;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        transform.Translate(Vector2.down * velocidad * Time.deltaTime);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        movimiento();
-    }
-   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +18,11 @@ public class ControlVida : MonoBehaviour
         {
             Debug.Log("se sumara una vida una vida");
             GameManager.Instance.RecuperarVidas();
+            Destroy(this.gameObject);
+        }
+        if (collision.CompareTag("Final"))
+        {
+            //gestionarPuntos(getPuntos());
             Destroy(this.gameObject);
         }
     }

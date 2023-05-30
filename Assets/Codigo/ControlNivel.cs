@@ -11,43 +11,22 @@ public class ControlNivel : MonoBehaviour
 
     [SerializeField] private GameObject salud;
     [SerializeField] private HUD hud;
-    [SerializeField] private bool finPiedra;
+
     [SerializeField] private EnemigoPiedra enePiedra;
     [SerializeField] private EnemigoNave eneNave;
     
     /*[SerializeField]
     private Puntaje puntaje;*/
     float timer;
+  
     float temporizadorVida;
 
-
-
-    void Start()
+    private void Start()
     {
         
-
-
-        /*eneNave.setVida(1);
-
-        finPiedra = false;
-     
         
-        //enePiedra.setPuntos(1);
-        
-        enePiedra.setTipoAtaque("mele");
 
-        enePiedra.decirNombre();
-
-        eneNave.decirNombre();
-
-        //enePiedra.setPuntaje( puntaje);*/
-
-        enePiedra.getPuedeDisparar(true);
-
-        //enePiedra.SetClasePuntos(puntaje);
-
-        //eneNave.SetClasePuntos(puntaje);
-      
+       
 
 
     }
@@ -55,12 +34,11 @@ public class ControlNivel : MonoBehaviour
 
     void Update()
     {
+        //cada frame llama a los emtodos de spawn
         spawVida();
         spawnNave();
+        spawnPiedra();
         
-        if (!finPiedra) {
-            spawnPiedra();
-        }
         
         
 
@@ -71,10 +49,10 @@ public class ControlNivel : MonoBehaviour
 
        temporizadorVida+=Time.deltaTime;
 
-        while (temporizadorVida >= 3)
+        while (temporizadorVida >= 6)
         {
             temporizadorVida = 0;
-            MovimientoVida(a);
+            SpawnVidas(a);
             
         }
 
@@ -111,13 +89,14 @@ public class ControlNivel : MonoBehaviour
 
     private void movimientoPiedra(Vector3 locacion)
     {
+        //establezco una posicion aleatorio entre unos valores y luego instancio el objeto
         float x = Random.Range((locacion.x - 30F), (locacion.x + 30F));
         float y = Random.Range(locacion.y, (locacion.y + 30F));
         Vector2 position = new Vector2(x, y);
         Quaternion rotation = new Quaternion();
         Instantiate(enePiedra, position, rotation);
     }
-    private void MovimientoVida(Vector3 locacion)
+    private void SpawnVidas(Vector3 locacion)
     {
         float x = Random.Range((locacion.x - 30F), (locacion.x + 30F));
         float y = Random.Range(locacion.y, (locacion.y + 30F));

@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField]
+    [SerializeField] private AudioClip sonidoAmbiente;
     public static GameManager Instance { get; private set; }
-    public float PuntosTotales { get { return puntosTotales; } }
+   
     private float puntosTotales;
     [SerializeField] private HUD hud;
 
     [SerializeField] public int vidas = 3;
+    //El metodo se llamara al principio de todo incluso si existiese un metodo start()
     void Awake()
     {
+
         if (Instance == null)
         {
             Instance= this;
@@ -26,38 +28,47 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //mwetodo para sumar puntos al HUD
+    //metodo para sumar puntos al HUD
 
     public void SumarPuntos(float puntosEntarda)
     {
 
         puntosTotales += puntosEntarda;
 
-        hud.ActualziarPuntos(puntosTotales);
+        hud.ActualizarPuntos(puntosTotales);
     }
+    //Metodo que sirve para detectar cuando se debe bajar la vida
     public void RecibirDaño()
     {
 
         vidas-= 1;
         if (vidas == 0)
         {
+            //Si las vidas son 0 se carga la escena del menu principal
             SceneManager.LoadScene(0);
         }
+        //Se llama a un metodo en el hud para que se quite una vida visual
         hud.DescativarVidas(vidas);
     }
+    //Metodo que sirve para detectar cuando se debe subir la vida
     public void RecuperarVidas()
     {
+        //Con este if se asegura que no pueda haber mas de tres vidas y asi evitar
+        //que salte la excepcion del incide del array
         if(vidas==3) {
             return;
         }
-       
+        //Se llama a un metodo en el hud para que se sume una vida visual
         hud.SumarVidas(vidas);
         vidas += 1;
     }
 
-
+    //Este metodo es usado para controlar el cambio de escena en un boton del menu principal
     public void CargarEscena(string nombreScena)
     {
+       
+       //AudioManager.Instance.ReproducirSonido(sonidoAmbiente);
+        
         SceneManager.LoadScene(nombreScena);
     }
 }

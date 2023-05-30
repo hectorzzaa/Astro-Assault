@@ -10,7 +10,7 @@ using UnityEngine.UI;
 {
 
 
-    [SerializeField] private int vida;
+    [SerializeField] private float vida;
 
     [SerializeField] private string tipoAtaque;
 
@@ -19,14 +19,14 @@ using UnityEngine.UI;
 
     [SerializeField] private Boolean puedeDisparar;
 
-    [SerializeField] private int id;
+    //[SerializeField] private int id;
 
 
-    public int getVida()
+    public float getVida()
     {
         return vida;
     }
-    public void setVida(int vida)
+    public void setVida(float vida)
     {
         this.vida=vida;
     }
@@ -56,33 +56,46 @@ using UnityEngine.UI;
     {
         this.puedeDisparar = puedeDisparar;
     }
-   
 
-
-    public virtual void OnDestroy()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Me destruyo pero no tengo identidad");
-    }
-    public virtual void decirNombre()
-    {
-        Debug.Log("Creo un objeto sin identidad :c");
 
-    }
-
-    public virtual void recibirDaño(int daño)
-    {
-        int vida = getVida();
-
-
-        vida -= daño;
-        if (vida == 0)
+        //Si llega a un objeto con la etiqueta de final se destruye asi consigo
+        //que cuando los enemigos caigan porque no han sido destruidos por el jugador se destruyan
+        if (collision.CompareTag("Final"))
         {
-            Debug.Log("se ha destruido el objeto por un disparo");
-
+            //gestionarPuntos(getPuntos());
+            Destroy(this.gameObject);
+        }
+        //con la colision se establece que cuando colisione con el enemigo este se destuya y
+        //llame a la instancia del GameManager y al metodo de recibir daño
+        if (collision.CompareTag("Jugador"))
+        {
+            GameManager.Instance.RecibirDaño();
             Destroy(this.gameObject);
 
         }
+    }
 
+
+
+
+    public virtual void recibirDaño(float daño)
+    {
+        float vida = getVida();
+
+
+        vida -= daño;
+        setVida(vida);
+        if (vida <= 0)
+        {
+            Debug.Log("se ha destruido el objeto por un disparo");
+            GameManager.Instance.SumarPuntos(getPuntos());
+            Destroy(this.gameObject);
+            
+
+        }
+        
 
     }
    
