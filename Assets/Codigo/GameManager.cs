@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    JugadorData jugador = new JugadorData();
     [SerializeField] private AudioClip sonidoAmbiente;
     public static GameManager Instance { get; private set; }
-   
+
+    public string nombreUsuario; 
+    public static float puntosUsuarios=40; 
+
     private float puntosTotales;
     [SerializeField] private HUD hud;
 
@@ -16,7 +20,7 @@ public class GameManager : MonoBehaviour
     //El metodo se llamara al principio de todo incluso si existiese un metodo start()
     void Awake()
     {
-
+       
         if (Instance == null)
         {
             Instance= this;
@@ -25,6 +29,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Hay mas de un game manager");
         }
+
+
     }
 
 
@@ -45,6 +51,9 @@ public class GameManager : MonoBehaviour
         if (vidas == 0)
         {
             //Si las vidas son 0 se carga la escena del menu principal
+            puntosUsuarios = puntosTotales;
+            jugador.puntuacion = puntosUsuarios;
+            GuardarJson(jugador,"prueba");
             SceneManager.LoadScene(0);
         }
         //Se llama a un metodo en el hud para que se quite una vida visual
@@ -71,4 +80,33 @@ public class GameManager : MonoBehaviour
         
         SceneManager.LoadScene(nombreScena);
     }
+    //La T sirve para definir un tipo generico
+   public void GuardarJson<T>(T datos,string nombreArchivo)
+    {
+        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+        string filePath = Path.Combine(folderPath, nombreArchivo);
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+        string json=JsonUtility.ToJson(datos);
+        File.WriteAllText(filePath+".json", json);
+    }
+    //C:\Users\hector\AppData\LocalLow\DefaultCompany\ProyectoUnity\Datos
+    public T LeerJson<T>(string ruta,string nombreArchivo)
+    {
+        string filePath = Path.Combine(ruta, nombreArchivo);
+
+        if(File.Exists(filePath))
+        {
+            // Lee el contenido del archivo JSON
+            string json = File.ReadAllText(filePath);
+            var obj=JsonUtility.FromJson<T>(json);
+            return obj;
+        }
+        return default;
+       
+    }
+
 }
