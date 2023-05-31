@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EscenaJugador.unity
     guid: 2eab6ef306542f244b8173e9855a8976
+  - enabled: 1
+    path: Assets/Scenes/EscenaInsertar.unity
+    guid: e41bc71e78713414a87765dcb698f86d
   m_configObjects: {}

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    JugadorData jugador = new JugadorData();
+    [SerializeField] private GameObject naveJugador;
+   
     [SerializeField] private AudioClip sonidoAmbiente;
     public static GameManager Instance { get; private set; }
 
@@ -20,7 +21,9 @@ public class GameManager : MonoBehaviour
     //El metodo se llamara al principio de todo incluso si existiese un metodo start()
     void Awake()
     {
-       
+      
+
+
         if (Instance == null)
         {
             Instance= this;
@@ -52,9 +55,15 @@ public class GameManager : MonoBehaviour
         {
             //Si las vidas son 0 se carga la escena del menu principal
             puntosUsuarios = puntosTotales;
-            jugador.puntuacion = puntosUsuarios;
-            GuardarJson(jugador,"prueba");
-            SceneManager.LoadScene(0);
+           
+           /* naveJugador.SetActive(false);
+            hud.ActivarInput();*/
+            //GuardarJson(jugador,"prueba");
+           // var p= hud.guardarNombre();
+
+            SceneManager.LoadScene(3);
+
+           
         }
         //Se llama a un metodo en el hud para que se quite una vida visual
         hud.DescativarVidas(vidas);
@@ -80,33 +89,41 @@ public class GameManager : MonoBehaviour
         
         SceneManager.LoadScene(nombreScena);
     }
-    //La T sirve para definir un tipo generico
-   public void GuardarJson<T>(T datos,string nombreArchivo)
-    {
-        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
-        string filePath = Path.Combine(folderPath, nombreArchivo);
 
-        if (!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-        }
-        string json=JsonUtility.ToJson(datos);
-        File.WriteAllText(filePath+".json", json);
-    }
-    //C:\Users\hector\AppData\LocalLow\DefaultCompany\ProyectoUnity\Datos
-    public T LeerJson<T>(string ruta,string nombreArchivo)
-    {
-        string filePath = Path.Combine(ruta, nombreArchivo);
 
-        if(File.Exists(filePath))
+
+    public void GuardarJson(List<JugadorData> nuevosjugadores, string nombreArchivo)
+    {
+        List<JugadorData> jugadoresExistente = new List<JugadorData>();
+
+        // Verificar si el archivo existe
+        string filePath = Path.Combine(Application.persistentDataPath+"/Datos", nombreArchivo + ".json");
+        if (File.Exists(filePath))
         {
-            // Lee el contenido del archivo JSON
             string json = File.ReadAllText(filePath);
-            var obj=JsonUtility.FromJson<T>(json);
-            return obj;
+            JugadoresTabla dataWrapper = JsonUtility.FromJson<JugadoresTabla>(json);
+            jugadoresExistente = dataWrapper.jugadores;
         }
-        return default;
-       
+
+        jugadoresExistente.AddRange(nuevosjugadores);
+
+        // Crear el wrapper con los jugadores actualizados
+        JugadoresTabla nuevosDatos = new JugadoresTabla(jugadoresExistente);
+
+        // Serializar y guardar en el archivo
+        string nuevoJson = JsonUtility.ToJson(nuevosDatos, true);
+        //nuevoJson = nuevoJson.Replace("}\n{", "},\n{");
+        File.WriteAllText(filePath, nuevoJson);
     }
 
+
+
+
+
+
+
+    public  void SetInputText(string input)
+    {
+        Debug.Log(input);
+    }
 }
