@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public string nombreUsuario; 
-    public static float puntosUsuarios=40; 
+    public static float puntosUsuarios; 
 
     private float puntosTotales;
     [SerializeField] private HUD hud;
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    //C:\Users\hector\AppData\LocalLow\DefaultCompany\ProyectoUnity\Datos
     public void GuardarJson(List<JugadorData> nuevosjugadores, string nombreArchivo)
     {
         List<JugadorData> jugadoresExistente = new List<JugadorData>();
@@ -107,17 +107,32 @@ public class GameManager : MonoBehaviour
 
         jugadoresExistente.AddRange(nuevosjugadores);
 
-        // Crear el wrapper con los jugadores actualizados
+        // Crear la tabla  con los jugadores actualizados
         JugadoresTabla nuevosDatos = new JugadoresTabla(jugadoresExistente);
 
         // Serializar y guardar en el archivo
         string nuevoJson = JsonUtility.ToJson(nuevosDatos, true);
-        //nuevoJson = nuevoJson.Replace("}\n{", "},\n{");
+       
         File.WriteAllText(filePath, nuevoJson);
     }
 
 
+    public List<JugadorData> LeerJson(string nombreArchivo)
+    {
+        string filePath = Path.Combine(Application.persistentDataPath + "/Datos", nombreArchivo + ".json");
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            JugadoresTabla dataWrapper = JsonUtility.FromJson<JugadoresTabla>(json);
 
+            if (dataWrapper != null)
+            {
+                return dataWrapper.jugadores;
+            }
+        }
+
+        return null;
+    }
 
 
 

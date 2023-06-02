@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class HUD : MonoBehaviour
 {
@@ -14,7 +16,12 @@ public class HUD : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI textoPuntos;
     [SerializeField] private TextMeshProUGUI textoUsuario;
+    [SerializeField] private TextMeshProUGUI listaJugadores;
+    [SerializeField] private TextMeshProUGUI textoNombre;
+    [SerializeField] private TextMeshProUGUI textoPuntuacion;
     [SerializeField] private GameObject input;
+    [SerializeField] private GameObject boton;
+    [SerializeField] private bool insertado;
     
     
     //El metodo sirve para que que al ser llamado desactive el indice del array
@@ -56,6 +63,8 @@ public class HUD : MonoBehaviour
     {
         Debug.Log("input1 " + textoUsuario.text);
 
+        if(insertado)
+        {
 
         List<JugadorData> jugadores = new List<JugadorData>();
         jugadores.Add(new JugadorData { usuario = textoUsuario.text, puntuacion = GameManager.puntosUsuarios });
@@ -63,7 +72,53 @@ public class HUD : MonoBehaviour
 
 
         GameManager.Instance.GuardarJson(jugadores, "prueba");
+        mostrarTabla();
+        insertado= false;
+        }
+        
     }
-    
+
+    private void Start()
+    {
+
+        
+        Debug.Log(SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name== "EscenaInsertar")
+        {
+            insertado = true;
+        mostrarTabla();
+        }
+
+    }
+    private void Update()
+    {
+        if (!insertado&& SceneManager.GetActiveScene().name == "EscenaInsertar")
+        {
+            boton.SetActive(false);
+            input.SetActive(false);
+        }
+    }
+
+    private void mostrarTabla()
+    {
+        //List<JugadorData> jugadores = new List<JugadorData>();
+        var jugadores2 = GameManager.Instance.LeerJson("prueba");
+        jugadores2=jugadores2.OrderByDescending(jugador=>jugador.puntuacion).ToList();
+        Debug.Log(jugadores2);
+
+        string textoNombreCompleto = "";
+        string textoPuntuacionCompleta = "";
+        foreach (JugadorData jugador in jugadores2)
+        {
+            Debug.Log(jugador.usuario + ": " + jugador.puntuacion);
+            textoNombreCompleto += jugador.usuario + "\n";
+            textoPuntuacionCompleta += jugador.puntuacion + "\n";
+
+        }
+        textoNombre.text = textoNombreCompleto;
+        textoPuntuacion.text = textoPuntuacionCompleta;
+
+
+    }
 
 }
