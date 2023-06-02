@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    //9
 
     public  void SetInputText(string input)
     {

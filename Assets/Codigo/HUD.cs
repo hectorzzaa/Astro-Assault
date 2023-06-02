@@ -61,7 +61,7 @@ public class HUD : MonoBehaviour
         jugadores.Add(new JugadorData { usuario = textoUsuario.text, puntuacion = GameManager.puntosUsuarios });
 
 
-
+        //9
         GameManager.Instance.GuardarJson(jugadores, "prueba");
     }
     
