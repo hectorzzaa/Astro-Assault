@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ControladorJugador : MonoBehaviour
 {
-
+    
     [SerializeField] private float velocidad;
     [SerializeField] private float xMinimo, xMaximo;
     [SerializeField] private float yMinimo, yMaximo;
@@ -22,6 +22,7 @@ public class ControladorJugador : MonoBehaviour
 
 
         gameObject.transform.position = new Vector3(0.19F, -2.58F, 0);
+        
     }
 
 

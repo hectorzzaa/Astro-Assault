@@ -688,7 +688,33 @@ MonoBehaviour:
   - {fileID: 1268684705}
   - {fileID: 1853088782}
   - {fileID: 1916880256}
+<<<<<<< Updated upstream
   texto: {fileID: 971810764}
+=======
+  textoPuntos: {fileID: 971810764}
+  textoUsuario: {fileID: 0}
+  input: {fileID: 0}
+--- !u!95 &1594539605
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594539599}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: facaa98539d2ff649a0fdff93b26464b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+>>>>>>> Stashed changes
 --- !u!1 &1745391236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf77175fa21eeeb46bfb2da79dc0ad4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+  naveJugador: {fileID: 0}
+  sonidoAmbiente: {fileID: 0}
+  nombreUsuario: 
+>>>>>>> Stashed changes
   hud: {fileID: 1594539604}
   vidas: 3
 --- !u!4 &2083462203

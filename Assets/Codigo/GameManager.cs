@@ -47,4 +47,73 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(nombreScena);
     }
+<<<<<<< Updated upstream
+=======
+
+
+
+    public void GuardarJson(List<JugadorData> nuevosjugadores, string nombreArchivo)
+    {
+        CrearDirectorio();
+        List<JugadorData> jugadoresExistente = new List<JugadorData>();
+
+        // Verificar si el archivo existe
+        string filePath = Path.Combine(Application.persistentDataPath+"/Datos", nombreArchivo + ".json");
+
+
+        
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            JugadoresTabla dataWrapper = JsonUtility.FromJson<JugadoresTabla>(json);
+            jugadoresExistente = dataWrapper.jugadores;
+        }
+
+        jugadoresExistente.AddRange(nuevosjugadores);
+
+        // Crear el wrapper con los jugadores actualizados
+        JugadoresTabla nuevosDatos = new JugadoresTabla(jugadoresExistente);
+
+        // Serializar y guardar en el archivo
+        string nuevoJson = JsonUtility.ToJson(nuevosDatos, true);
+        //nuevoJson = nuevoJson.Replace("}\n{", "},\n{");
+        File.WriteAllText(filePath, nuevoJson);
+    }
+    public void CrearDirectorio(){
+
+
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+    }
+
+public List<JugadorData> LeerJson(string nombreArchivo)
+{
+    string filePath = Path.Combine(Application.persistentDataPath + "/Datos", nombreArchivo + ".json");
+
+    if (File.Exists(filePath))
+    {
+        string json = File.ReadAllText(filePath);
+        JugadoresTabla dataWrapper = JsonUtility.FromJson<JugadoresTabla>(json);
+
+        if (dataWrapper != null)
+        {
+            return dataWrapper.jugadores;
+        }
+    }
+
+    return null;
+}
+
+
+
+
+    public  void SetInputText(string input)
+    {
+        Debug.Log(input);
+    }
+>>>>>>> Stashed changes
 }
