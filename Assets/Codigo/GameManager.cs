@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
     //C:\Users\hector\AppData\LocalLow\DefaultCompany\ProyectoUnity\Datos
     public void GuardarJson(List<JugadorData> nuevosjugadores, string nombreArchivo)
     {
+       
         List<JugadorData> jugadoresExistente = new List<JugadorData>();
 
         // Verificar si el archivo existe
@@ -114,6 +115,30 @@ public class GameManager : MonoBehaviour
         string nuevoJson = JsonUtility.ToJson(nuevosDatos, true);
        
         File.WriteAllText(filePath, nuevoJson);
+    }
+    public void crearDirectorio()
+    {
+        string directoryPath = Path.Combine(Application.persistentDataPath, "Datos");
+        if (!Directory.Exists(directoryPath))
+        {
+            // El directorio no existe, crearlo
+            Directory.CreateDirectory(directoryPath);
+        }
+    }
+
+    public void EscribirJsonVacio(string nombreArchivo)
+    {
+        crearDirectorio();
+        string filePath = Path.Combine(Application.persistentDataPath + "/Datos", nombreArchivo + ".json");
+        if (!File.Exists(filePath))
+        {
+            // El archivo no existe, crearlo
+            using (StreamWriter sw = File.CreateText(filePath))
+            {
+                // Escribir un JSON vacío en el archivo
+                sw.Write("{}");
+            }
+        }
     }
 
 

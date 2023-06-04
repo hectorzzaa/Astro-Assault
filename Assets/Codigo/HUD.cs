@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour
    
     //Se crea un array para el numero de vidas cada vida sera un array de GameObject
     public GameObject[] Vidas;
-    
+    [SerializeField] private string nombreArchivo;
     [SerializeField] private TextMeshProUGUI textoPuntos;
     [SerializeField] private TextMeshProUGUI textoUsuario;
     [SerializeField] private TextMeshProUGUI listaJugadores;
@@ -71,7 +71,7 @@ public class HUD : MonoBehaviour
 
 
 
-        GameManager.Instance.GuardarJson(jugadores, "prueba");
+        GameManager.Instance.GuardarJson(jugadores, nombreArchivo);
         mostrarTabla();
         insertado= false;
         }
@@ -86,7 +86,8 @@ public class HUD : MonoBehaviour
         if (SceneManager.GetActiveScene().name== "EscenaInsertar")
         {
             insertado = true;
-        mostrarTabla();
+            GameManager.Instance.EscribirJsonVacio(nombreArchivo);
+            mostrarTabla();
         }
 
     }
@@ -102,7 +103,7 @@ public class HUD : MonoBehaviour
     private void mostrarTabla()
     {
         //List<JugadorData> jugadores = new List<JugadorData>();
-        var jugadores2 = GameManager.Instance.LeerJson("prueba");
+        var jugadores2 = GameManager.Instance.LeerJson(nombreArchivo);
         jugadores2=jugadores2.OrderByDescending(jugador=>jugador.puntuacion).ToList();
         Debug.Log(jugadores2);
 

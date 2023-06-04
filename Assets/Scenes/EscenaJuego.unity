@@ -829,12 +829,15 @@ MonoBehaviour:
   - {fileID: 1268684705}
   - {fileID: 1853088782}
   - {fileID: 1916880256}
+  nombreArchivo: prueba
   textoPuntos: {fileID: 971810764}
   textoUsuario: {fileID: 0}
   listaJugadores: {fileID: 0}
   textoNombre: {fileID: 0}
   textoPuntuacion: {fileID: 0}
   input: {fileID: 0}
+  boton: {fileID: 0}
+  insertado: 0
 --- !u!95 &1594539605
 Animator:
   serializedVersion: 5

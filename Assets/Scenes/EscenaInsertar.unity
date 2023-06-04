@@ -689,6 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vidas: []
+  nombreArchivo: prueba
   textoPuntos: {fileID: 0}
   textoUsuario: {fileID: 1630354174}
   listaJugadores: {fileID: 346499632}
