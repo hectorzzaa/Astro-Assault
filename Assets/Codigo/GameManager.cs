@@ -6,18 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject naveJugador;
+
    
-    [SerializeField] private AudioClip sonidoAmbiente;
+
     public static GameManager Instance { get; private set; }
-
+    [Header("Configuracion puntos usuarios y vidas")]
     public string nombreUsuario; 
-    public static float puntosUsuarios; 
+    public static float puntosUsuarios;
 
-    private float puntosTotales;
+    [SerializeField] private float puntosTotales;
     [SerializeField] private HUD hud;
 
     [SerializeField] public int vidas = 3;
+
+
+    [Header("Configuracion balas")]
+
+    [SerializeField] private GameObject balaEnemigo;
+
+    [SerializeField] private List<GameObject> listaObjetos= new List<GameObject>();
+
+    public int cantidadBalas;
+
+
+
+
+
+
+
     //El metodo se llamara al principio de todo incluso si existiese un metodo start()
     void Awake()
     {
@@ -35,6 +51,39 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    private void Start()
+    {
+        for(int i = 0; i < cantidadBalas; i++)
+        {
+            GameObject objeto = Instantiate(balaEnemigo);
+            objeto.SetActive(false);
+            listaObjetos.Add(objeto);
+        }
+
+
+
+
+    }
+
+    public GameObject GetListaObjetos()
+    {
+        //Recorro la lista
+        for (int i = 0; i < listaObjetos.Count; i++)
+        {
+            //Si el objeto no esta activo en la jerarquia lo devuelve
+            if (!listaObjetos[i].activeInHierarchy)
+            {
+                return listaObjetos[i];
+            }
+
+        }
+
+        return null;
+    }
+
+
+
 
 
     //metodo para sumar puntos al HUD

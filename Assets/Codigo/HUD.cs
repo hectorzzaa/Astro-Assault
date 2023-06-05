@@ -22,6 +22,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject input;
     [SerializeField] private GameObject boton;
     [SerializeField] private bool insertado;
+
     
     
     //El metodo sirve para que que al ser llamado desactive el indice del array

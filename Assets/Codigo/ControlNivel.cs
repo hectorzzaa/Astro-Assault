@@ -36,7 +36,7 @@ public class ControlNivel : MonoBehaviour
     {
         //cada frame llama a los emtodos de spawn
         spawVida();
-        spawnNave();
+       // spawnNave();
         spawnPiedra();
         
         
