@@ -13,6 +13,7 @@ public class ControladorBalaEnemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector2.down * 20 * Time.deltaTime);
+
     }
 }
