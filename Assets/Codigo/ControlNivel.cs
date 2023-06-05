@@ -23,10 +23,19 @@ public class ControlNivel : MonoBehaviour
 
     private void Start()
     {
+        EnemigoNave eneNaveComponent = eneNave.GetComponent<EnemigoNave>();
+
+        // Asignar la variable naveJugador con la instancia de la nave del jugador
         
+        float x = 0;
+        float y = 18;
+        Vector2 position = new Vector2(x, y);
+        Quaternion rotation = new Quaternion();
+       
+        Instantiate(eneNave, position, rotation);
         
 
-       
+
 
 
     }

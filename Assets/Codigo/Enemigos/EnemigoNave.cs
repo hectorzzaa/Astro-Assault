@@ -6,7 +6,7 @@ using UnityEngine;
 {
     [SerializeField] private float timer;
     [SerializeField] private Transform controladorDisparoEnemigo;
-    [SerializeField] private Transform naveJugador;
+    public Transform naveJugador;
     private void Update()
     {
         timer += Time.deltaTime;
@@ -51,7 +51,7 @@ using UnityEngine;
             for (int i = 0; i < numBalas; i++)
             {
                 Vector2 jugadorObjetivo=naveJugador.position-transform.position;
-                
+                Debug.Log(jugadorObjetivo);
                 GameObject bala = GameManager.Instance.GetListaObjetos();
                 if (bala != null)
                 {
