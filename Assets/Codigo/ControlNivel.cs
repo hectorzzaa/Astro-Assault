@@ -36,7 +36,7 @@ public class ControlNivel : MonoBehaviour
     {
         //cada frame llama a los emtodos de spawn
         spawVida();
-       // spawnNave();
+        //spawnNave();
         spawnPiedra();
         
         
@@ -82,6 +82,7 @@ public class ControlNivel : MonoBehaviour
             float y = 18;
             Vector2 position = new Vector2(x, y);
             Quaternion rotation = new Quaternion();
+            GameManager.Instance.cantidadBalas = GameManager.Instance.cantidadBalas * 2;
             Instantiate(eneNave, position, rotation);
 
         }

@@ -136,7 +136,9 @@ MonoBehaviour:
   puntos: 10
   puedeDisparar: 1
   timer: 0
-  controladorDisparoEnemigo: {fileID: 0}
+  controladorDisparoEnemigo: {fileID: 1223798430486579505}
+  naveJugador: {fileID: 0}
+  numeroBalas: 0
 --- !u!61 &3002460268799483801
 BoxCollider2D:
   m_ObjectHideFlags: 0

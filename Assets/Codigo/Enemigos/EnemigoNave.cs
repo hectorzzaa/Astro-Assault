@@ -6,11 +6,11 @@ using UnityEngine;
 {
     [SerializeField] private float timer;
     [SerializeField] private Transform controladorDisparoEnemigo;
-
+    [SerializeField] private Transform naveJugador;
     private void Update()
     {
         timer += Time.deltaTime;
-        while (timer >= 1) 
+        while (timer >= 3) 
         {
            timer = 0;
             disparar();
@@ -19,7 +19,10 @@ using UnityEngine;
 
 
     }
-   
+    private void Start()
+    {
+        //gameObject.transform.position = new Vector3(0.19F, 10F, 0);
+    }
 
 
     public void movimiento()
@@ -40,40 +43,34 @@ using UnityEngine;
                 bala2.SetActive(true);
             }*/
 
-         StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalas, 0.1f));
+         StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalas, 0.2f));
 
          IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
          {
-             
-                 GameObject bala2 = GameManager.Instance.GetListaObjetos();
-                 if (bala2 != null)
-                 {
-                     bala2.transform.position = controladorDisparoEnemigo.position;
-                     bala2.SetActive(true);
-                 }
-                
 
-                 yield return new WaitForSeconds(retardo);
+            for (int i = 0; i < numBalas; i++)
+            {
+                Vector2 jugadorObjetivo=naveJugador.position-transform.position;
+                
+                GameObject bala = GameManager.Instance.GetListaObjetos();
+                if (bala != null)
+                {
+                    ControladorBalaEnemigo controlBala = bala.GetComponent<ControladorBalaEnemigo>();
+
+                    controlBala.SetDirection(jugadorObjetivo.normalized);
+                    controlBala.SetDirectionAndSpeed(jugadorObjetivo.normalized, 30);
+                    bala.transform.position = controladorDisparoEnemigo.position;
+                    bala.SetActive(true);
+                }
+
+                yield return new WaitForSeconds(retardo);
+            }
              
     }
 
 
 
-    //Intsancio el objeto de bala usando la posicion del controladorDisparo
-    //que esta establecido como hijo del objeto naveJugador
-
-    // Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
-
-    //Creo el gameObject
-    GameObject bala = GameManager.Instance.GetListaObjetos();
-        if (bala != null)
-        {
-            //Lo instancio usando la posicion del controlador disparo
-            //bala.transform.position = controladorDisparo.position;
-            bala.SetActive(true);
-        }
-
-        //AudioManager.Instance.ReproducirSonido(sonidoDisparo);
+    
     }
 
 

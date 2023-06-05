@@ -68,7 +68,7 @@ public class ControladorJugador : MonoBehaviour
         private void disparar()
     {
 
-        /*StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalas, 0.1f));
+      /* StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalas, 0.1f));
 
         IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
         {
@@ -88,7 +88,7 @@ public class ControladorJugador : MonoBehaviour
 
                 yield return new WaitForSeconds(retardo);
             }
-        }*/
+        }
 
 
 
@@ -107,6 +107,6 @@ public class ControladorJugador : MonoBehaviour
         }
         
         AudioManager.Instance.ReproducirSonido(sonidoDisparo);
+      */
     }
-
 }
