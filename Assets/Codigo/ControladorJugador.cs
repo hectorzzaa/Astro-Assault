@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class ControladorJugador : MonoBehaviour
@@ -15,13 +16,15 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private Transform controladorDisparo;
     [SerializeField] private AudioClip sonidoDisparo;
     [SerializeField] private HUD hud;
+
    
 
     void Start()
     {
+       
         //Al poner una posicion estandar en el metodo start()
         //me aseguro que el jugador empiece en el mismo sitio siempre
-        gameObject.transform.position = new Vector3(0.19F, -2.58F, 0);
+        //gameObject.transform.position = new Vector3(0.19F, -2.58F, 0);
     }
 
 

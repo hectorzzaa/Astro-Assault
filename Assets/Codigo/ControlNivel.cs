@@ -14,7 +14,7 @@ public class ControlNivel : MonoBehaviour
 
     [SerializeField] private EnemigoPiedra enePiedra;
     [SerializeField] private EnemigoNave eneNave;
-    
+    [SerializeField] GameObject jugador;
     /*[SerializeField]
     private Puntaje puntaje;*/
     float timer;
@@ -23,6 +23,13 @@ public class ControlNivel : MonoBehaviour
 
     private void Start()
     {
+
+
+        Vector2 positionJugador = new Vector2(0.19F, -2.58F);
+        Quaternion rotationJugador = new Quaternion();
+        Instantiate(jugador, positionJugador, rotationJugador);
+
+
         EnemigoNave eneNaveComponent = eneNave.GetComponent<EnemigoNave>();
 
         // Asignar la variable naveJugador con la instancia de la nave del jugador
@@ -114,6 +121,6 @@ public class ControlNivel : MonoBehaviour
         Quaternion rotation = new Quaternion();
         Instantiate(salud, position, rotation);
     }
-
+    
 
 }

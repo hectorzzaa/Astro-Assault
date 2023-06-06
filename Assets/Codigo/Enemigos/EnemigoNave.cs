@@ -47,10 +47,13 @@ using UnityEngine;
 
          IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
          {
-
+            ControladorJugador[] navesJugador = FindObjectsOfType<ControladorJugador>();
+            foreach (ControladorJugador naveJugador in navesJugador)
+            {
+                
             for (int i = 0; i < numBalas; i++)
             {
-                Vector2 jugadorObjetivo=naveJugador.position-transform.position;
+                Vector2 jugadorObjetivo = naveJugador.transform.position - transform.position;
                 Debug.Log(jugadorObjetivo);
                 GameObject bala = GameManager.Instance.GetListaObjetos();
                 if (bala != null)
@@ -66,6 +69,7 @@ using UnityEngine;
                 yield return new WaitForSeconds(retardo);
             }
              
+            }
     }
 
 
