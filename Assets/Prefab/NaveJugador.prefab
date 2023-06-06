@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 25
-  xMinimo: -36
+  xMinimo: -86
   xMaximo: 36
   yMinimo: -19
   yMaximo: 19
+  bala: {fileID: 5786340782487191085, guid: 4f1c9076ffb94724daed9426da13c054, type: 3}
   controladorDisparo: {fileID: 2061523794019557044}
   sonidoDisparo: {fileID: 8300000, guid: 97680ac3127f1a44fbe3fc848f38e2de, type: 3}
   hud: {fileID: 0}

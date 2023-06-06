@@ -137,7 +137,12 @@ MonoBehaviour:
   puedeDisparar: 1
   timer: 0
   controladorDisparoEnemigo: {fileID: 1223798430486579505}
+  bala: {fileID: 8149373394779185391, guid: a65480bd32aae974e9397194cfa0d8cc, type: 3}
   naveJugador: {fileID: 2061523792770288333, guid: 081accbaf1cf21f4db0bbd5397ae8009, type: 3}
+  distanciaObjeto: 10
+  rangoDisparo: 40
+  velocidadMovimiento: 5
+  haDisparado: 0
 --- !u!61 &3002460268799483801
 BoxCollider2D:
   m_ObjectHideFlags: 0

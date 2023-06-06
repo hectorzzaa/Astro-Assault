@@ -22,11 +22,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Configuracion balas")]
 
+    public int maxNaves;
+    public int numNaves;
     [SerializeField] private GameObject balaEnemigo;
-
+    public int cantidadBalasEnemigo;
     [SerializeField] private List<GameObject> listaObjetos= new List<GameObject>();
+    [Header("Configuracion balas jugador")]
 
-    public int cantidadBalas;
+    [SerializeField] private GameObject balaJugador;
+
+    [SerializeField] private List<GameObject> listaObjetosJugador= new List<GameObject>();
+
+                     public int cantidadBalasJuagador;
+
 
 
 
@@ -54,16 +62,30 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < cantidadBalas; i++)
+
+
+        ListarBalas(cantidadBalasEnemigo);
+        ListarBalasJugador(cantidadBalasJuagador);
+
+
+    }
+    public void ListarBalas(int balas)
+    {
+        for (int i = 0; i < balas; i++)
         {
             GameObject objeto = Instantiate(balaEnemigo);
             objeto.SetActive(false);
             listaObjetos.Add(objeto);
         }
-
-
-
-
+    }
+    public void BorrarBalasLista(int balas)
+    {
+        for (int i = balas - 1; i >= 0; i--)
+        {
+            GameObject objeto = listaObjetos[i];
+            listaObjetos.RemoveAt(i);
+            Destroy(objeto);
+        }
     }
 
     public GameObject GetListaObjetos()
@@ -75,6 +97,33 @@ public class GameManager : MonoBehaviour
             if (!listaObjetos[i].activeInHierarchy)
             {
                 return listaObjetos[i];
+            }
+
+        }
+
+        return null;
+    }
+
+    public void ListarBalasJugador(int balas)
+    {
+        for (int i = 0; i < balas; i++)
+        {
+            GameObject objeto = Instantiate(balaJugador);
+            objeto.SetActive(false);
+            listaObjetosJugador.Add(objeto);
+        }
+    }
+  
+    
+    public GameObject GetListaObjetosJugador()
+    {
+        //Recorro la lista
+        for (int i = 0; i < listaObjetosJugador.Count; i++)
+        {
+            //Si el objeto no esta activo en la jerarquia lo devuelve
+            if (!listaObjetosJugador[i].activeInHierarchy)
+            {
+                return listaObjetosJugador[i];
             }
 
         }

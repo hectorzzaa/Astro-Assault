@@ -6,6 +6,7 @@ public class ControladorBalaEnemigo : MonoBehaviour
 {
     private Vector3 direction;
     private float speed;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,13 @@ public class ControladorBalaEnemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        timer += Time.deltaTime;
+        while (timer > 3)
+        {
+            timer = 0;
+            gameObject.SetActive(false);
+        }
         //transform.Translate(Vector2.down * 20 * Time.deltaTime);
         transform.position += direction * speed * Time.deltaTime;
 

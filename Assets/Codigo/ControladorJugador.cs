@@ -12,7 +12,7 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private float velocidad;
     [SerializeField] private float xMinimo, xMaximo;
     [SerializeField] private float yMinimo, yMaximo;
-
+    //[SerializeField] private GameObject bala;
     [SerializeField] private Transform controladorDisparo;
     [SerializeField] private AudioClip sonidoDisparo;
     [SerializeField] private HUD hud;
@@ -71,45 +71,48 @@ public class ControladorJugador : MonoBehaviour
         private void disparar()
     {
 
-      /* StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalas, 0.1f));
-
-        IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
-        {
-            for (int i = 0; i < numBalas; i++)
-            {
-                GameObject bala = GameManager.Instance.GetListaObjetos();
-                if (bala != null)
-                {
-                    bala.transform.position = controladorDisparo.position;
-                    bala.SetActive(true);
-                }
-                else
-                {
-                    // Si no se encuentra más balas disponibles, puedes romper el bucle o tomar alguna otra acción
-                    break;
-                }
-
-                yield return new WaitForSeconds(retardo);
-            }
-        }
+        //Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
 
 
+        StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalasJuagador, 0.1f));
 
-            //Intsancio el objeto de bala usando la posicion del controladorDisparo
-            //que esta establecido como hijo del objeto naveJugador
-            
-        // Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
+          IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
+          {
+              //for (int i = 0; i < numBalas; i++)
+              //{
+                  GameObject bala = GameManager.Instance.GetListaObjetosJugador();
+                  if (bala != null)
+                  {
+                      bala.transform.position = controladorDisparo.position;
+                      bala.SetActive(true);
+                  }
+                  //else
+                  //{
+                      // Si no se encuentra más balas disponibles, puedes romper el bucle o tomar alguna otra acción
+                      //break;
+                  //}
+
+                  yield return new WaitForSeconds(retardo);
+              //}
+          }
+
+
+
+              //Intsancio el objeto de bala usando la posicion del controladorDisparo
+              //que esta establecido como hijo del objeto naveJugador
+
+          // Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
+
+              //Creo el gameObject
+              GameObject bala=GameManager.Instance.GetListaObjetos();
+          if (bala!=null)
+          {
+              //Lo instancio usando la posicion del controlador disparo
+              bala.transform.position = controladorDisparo.position;
+              bala.SetActive(true);
+          }
+
+          AudioManager.Instance.ReproducirSonido(sonidoDisparo);
         
-            //Creo el gameObject
-            GameObject bala=GameManager.Instance.GetListaObjetos();
-        if (bala!=null)
-        {
-            //Lo instancio usando la posicion del controlador disparo
-            bala.transform.position = controladorDisparo.position;
-            bala.SetActive(true);
-        }
-        
-        AudioManager.Instance.ReproducirSonido(sonidoDisparo);
-      */
     }
 }

@@ -62,7 +62,7 @@ using UnityEngine.UI;
 
         //Si llega a un objeto con la etiqueta de final se destruye asi consigo
         //que cuando los enemigos caigan porque no han sido destruidos por el jugador se destruyan
-        if (collision.CompareTag("Final"))
+        if (collision.CompareTag("FinalAbajo"))
         {
             //gestionarPuntos(getPuntos());
             Destroy(this.gameObject);
