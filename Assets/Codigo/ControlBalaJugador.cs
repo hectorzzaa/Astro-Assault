@@ -50,10 +50,13 @@ public class ControlBalaJugador : MonoBehaviour
 
         if (collision.CompareTag("finalBala"))
         {
+            GameManager.Instance.municion--;
+            Debug.Log(GameManager.Instance.numNaves);
             Debug.Log("final");
             //Destroy(gameObject);
             gameObject.SetActive(false);
         }
 
     }
+    
 }

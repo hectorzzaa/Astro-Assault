@@ -17,6 +17,7 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private AudioClip sonidoDisparo;
     [SerializeField] private HUD hud;
 
+
    
 
     void Start()
@@ -55,7 +56,11 @@ public class ControladorJugador : MonoBehaviour
         //En este caso en vez de mover la nave llama al metodo disparar
         if (Input.GetKeyUp(KeyCode.E))
         {
+           // if(GameManager.Instance.municion< GameManager.Instance.municionMax)
+            //{
             disparar();
+
+           // }
         }
     }
 
@@ -104,14 +109,15 @@ public class ControladorJugador : MonoBehaviour
           // Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
 
               //Creo el gameObject
-              GameObject bala=GameManager.Instance.GetListaObjetos();
+          /*    GameObject bala=GameManager.Instance.GetListaObjetosJugador();
           if (bala!=null)
           {
               //Lo instancio usando la posicion del controlador disparo
               bala.transform.position = controladorDisparo.position;
               bala.SetActive(true);
+            GameManager.Instance.municion++;
           }
-
+          */
           AudioManager.Instance.ReproducirSonido(sonidoDisparo);
         
     }

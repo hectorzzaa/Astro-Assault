@@ -49,7 +49,7 @@ public class ControladorBalaEnemigo : MonoBehaviour
         }
         if (collision.CompareTag("Jugador"))
         {
-            Debug.Log("dado");
+            GameManager.Instance.RecibirDaño();
             gameObject.SetActive(false);
         }
     }

@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> listaObjetosJugador= new List<GameObject>();
 
                      public int cantidadBalasJuagador;
+                     public int municion;
+                     public int municionMax;
 
 
 
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         ListarBalas(cantidadBalasEnemigo);
         ListarBalasJugador(cantidadBalasJuagador);
-
+        municionMax = cantidadBalasJuagador;
 
     }
     public void ListarBalas(int balas)

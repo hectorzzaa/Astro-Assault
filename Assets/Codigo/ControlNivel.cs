@@ -117,8 +117,8 @@ public class ControlNivel : MonoBehaviour
     private void movimientoNave(Vector3 locacion)
     {
 
-        float xminimo = -30f;
-        float xMaximo = 30f;
+        float xminimo = -33f;
+        float xMaximo = 33f;
         
 
 
