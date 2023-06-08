@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
@@ -16,9 +18,32 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private Transform controladorDisparo;
     [SerializeField] private AudioClip sonidoDisparo;
     [SerializeField] private HUD hud;
+    [SerializeField] private Controles controles;
+    [SerializeField] private Vector2 pruebavector;
+    private void Awake()
+    {
+        controles= new Controles();
+        
+    }
+    private void OnEnable()
+    {
+        controles.Juego.Enable();
+        //detecto cada vez que se pulsa un boton o se mantiene una direccion
+        controles.Juego.Movmiento.performed+=moverJugador;
+        //cuando dejo de moverlo vuelve a 0
+        controles.Juego.Movmiento.canceled+=moverJugador;
+        //En este caso solo detecta cuando lo pulso
+        controles.Juego.disparo.started+=disparar; 
+    }
 
+    
 
-   
+    private void moverJugador(InputAction.CallbackContext obj)
+    {
+        Vector2 moveDir = obj.ReadValue<Vector2>();
+        Debug.Log(moveDir);
+        pruebavector= moveDir;
+    }
 
     void Start()
     {
@@ -36,32 +61,11 @@ public class ControladorJugador : MonoBehaviour
         float y = Mathf.Clamp(transform.position.y,yMinimo,yMaximo);
         //Con el rango de valores estableido me aseguro que el objeto no pueda salir de la camara
         transform.position = new Vector3(x,y,0);
-        //Se comprueba cuando se pulsa una tecla para asi aplicar una fuerza
-        if (Input.GetKey(KeyCode.LeftArrow)||Input.GetKey(KeyCode.A))
-        {
-            gameObject.transform.Translate(Vector2.left * (velocidad * Time.deltaTime));
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            gameObject.transform.Translate(Vector2.right * (velocidad * Time.deltaTime));
-        }
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.DownArrow))
-        {
-            gameObject.transform.Translate(Vector2.down * (velocidad * Time.deltaTime));
-        }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            gameObject.transform.Translate(Vector2.up * (velocidad * Time.deltaTime));
-        }
-        //En este caso en vez de mover la nave llama al metodo disparar
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-           // if(GameManager.Instance.municion< GameManager.Instance.municionMax)
-            //{
-            disparar();
 
-           // }
-        }
+
+        gameObject.transform.Translate(new Vector2(pruebavector.x, pruebavector.y) *velocidad*Time.deltaTime);
+
+
     }
 
 
@@ -73,13 +77,15 @@ public class ControladorJugador : MonoBehaviour
     }
 
 
-        private void disparar()
+        private void disparar(InputAction.CallbackContext obj)
     {
 
         //Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
+        if (SceneManager.GetActiveScene().name == "EscenaJuego")
+        { 
+        
 
-
-        StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalasJuagador, 0.1f));
+            StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalasJuagador, 0.1f));
 
           IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
           {
@@ -119,6 +125,6 @@ public class ControladorJugador : MonoBehaviour
           }
           */
           AudioManager.Instance.ReproducirSonido(sonidoDisparo);
-        
+        }
     }
 }
