@@ -51,11 +51,12 @@ public class ControlNivel : MonoBehaviour
 
     void Update()
     {
-        spawnNave();
+        
+
         //cada frame llama a los emtodos de spawn
-        /* spawVida();
+         spawVida();
          spawnNave();
-         spawnPiedra();*/
+         spawnPiedra();
 
 
 
@@ -91,7 +92,7 @@ public class ControlNivel : MonoBehaviour
     }
     private void spawnNave()
     {
-        Vector3 a = new Vector3(0, 0);
+        Vector3 a = this.transform.position;
         timer += Time.deltaTime;
         while (GameManager.Instance.numNaves < GameManager.Instance.maxNaves && timer >= 3)
         {
@@ -117,8 +118,8 @@ public class ControlNivel : MonoBehaviour
     private void movimientoNave(Vector3 locacion)
     {
 
-        float xminimo = -33f;
-        float xMaximo = 33f;
+        float xminimo = -25f;
+        float xMaximo = 25f;
         
 
 

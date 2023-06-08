@@ -131,13 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a6e04ca1a5fc3459c10cb8f324a27c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 1
+  vida: 3
   tipoAtaque: disparo
   puntos: 10
   puedeDisparar: 1
   timer: 0
   controladorDisparoEnemigo: {fileID: 1223798430486579505}
-  bala: {fileID: 8149373394779185391, guid: a65480bd32aae974e9397194cfa0d8cc, type: 3}
+  juagdorObjetivo: {fileID: 2061523792770288333, guid: 081accbaf1cf21f4db0bbd5397ae8009, type: 3}
+  controlNivel: {fileID: 0}
   naveJugador: {fileID: 2061523792770288333, guid: 081accbaf1cf21f4db0bbd5397ae8009, type: 3}
   distanciaObjeto: 10
   rangoDisparo: 40

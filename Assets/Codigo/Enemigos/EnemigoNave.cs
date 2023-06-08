@@ -5,20 +5,34 @@ using UnityEngine;
  class EnemigoNave : Enemigo
 {
     [SerializeField] private float timer;
+    [Header("Obejtos")]
     [SerializeField] private Transform controladorDisparoEnemigo;
     [SerializeField] private GameObject controlNivel;
-    public Transform naveJugador;
-    public float distanciaObjeto = 50f;
-    public float rangoDisparo = 5f;
-    public float velocidadMovimiento = 5f;
-    public bool haDisparado=false;
+    [SerializeField] private GameObject jugador;
+    [Header("Valores necesarios")]
+    [SerializeField] private float distanciaObjeto = 50f;
+    [SerializeField] private float rangoDisparo = 5f;
+    [SerializeField] private float velocidadMovimiento = 5f;
+    [SerializeField] private bool haDisparado=false;
+    [SerializeField] private bool puedeMoverse=true;
+
+     private void Start()
+    {
+
+        jugador = GameObject.FindGameObjectWithTag("Jugador");
+
+        //gameObject.transform.position = new Vector3(0.19F, 10F, 0);
+        haDisparado = false;
+    }
+
+
     private void Update()
     {
-        transform.Translate(Vector2.down * 10 * Time.deltaTime);
-        // SeguirJugador();
-        GameObject jugador = GameObject.FindGameObjectWithTag("Jugador");
+        //transform.Translate(Vector2.down * 10 * Time.deltaTime);
+         SeguirJugador();
+        
 
-        if (jugador != null)
+        /*if (jugador != null)
         {
             float distancia = Vector3.Distance(transform.position, jugador.transform.position);
 
@@ -33,14 +47,46 @@ using UnityEngine;
         
                 }
             }
-        }
+        }*/
 
 
        
 
 
     }
+    private void SeguirJugador()
+    {
+        float distancia = Vector3.Distance(transform.position, jugador.transform.position);
+       
+        if (distancia < 25)
+        {
+            transform.position = this.transform.position;
+            disparar();
+            
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, jugador.transform.position, 10 * Time.deltaTime);
 
+        }
+       
+
+
+
+
+        /* Vector3 jugadorObjetivo = naveJugador.transform.position;
+         Vector3 direccion = (jugadorObjetivo - transform.position).normalized;
+         Vector3 nuevaPosicion = transform.position + direccion * velocidadMovimiento * Time.deltaTime;
+
+         // Mantener la distancia deseada entre el objeto y el jugador
+         if (Vector3.Distance(nuevaPosicion, jugadorObjetivo) > distanciaObjeto)
+         {
+             nuevaPosicion = jugadorObjetivo + (nuevaPosicion - jugadorObjetivo).normalized * distanciaObjeto;
+         }
+
+         transform.position = nuevaPosicion;*/
+
+    }
 
     private void OnDestroy()
     {
@@ -52,14 +98,7 @@ using UnityEngine;
     }
 
 
-    private void Start()
-    {
-
-        
-
-        //gameObject.transform.position = new Vector3(0.19F, 10F, 0);
-        haDisparado = false;
-    }
+   
 
 
     public void movimiento()
@@ -67,21 +106,7 @@ using UnityEngine;
         //transform.Translate(Vector2.down * 10 * Time.deltaTime);
     }
 
-    private void SeguirJugador()
-    {
-        Vector3 jugadorObjetivo = naveJugador.transform.position;
-        Vector3 direccion = (jugadorObjetivo - transform.position).normalized;
-        Vector3 nuevaPosicion = transform.position + direccion * velocidadMovimiento * Time.deltaTime;
-
-        // Mantener la distancia deseada entre el objeto y el jugador
-        if (Vector3.Distance(nuevaPosicion, jugadorObjetivo) > distanciaObjeto)
-        {
-            nuevaPosicion = jugadorObjetivo + (nuevaPosicion - jugadorObjetivo).normalized * distanciaObjeto;
-        }
-
-        transform.position = nuevaPosicion;
-
-    }
+   
 
 
 

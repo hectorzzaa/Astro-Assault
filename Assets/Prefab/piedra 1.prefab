@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c77640c45c5e34f83a12df66e3c50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 2
+  vida: 1
   tipoAtaque: mele
   puntos: 1
   puedeDisparar: 1
