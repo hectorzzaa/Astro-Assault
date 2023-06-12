@@ -10,20 +10,23 @@ using UnityEngine.UIElements;
 
 public class ControladorJugador : MonoBehaviour
 {
-
+    [Header("campos basicos")]
     [SerializeField] private float velocidad;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float xMinimo, xMaximo;
     [SerializeField] private float yMinimo, yMaximo;
     //[SerializeField] private GameObject bala;
+    [Header("campos para el disparo")]
     [SerializeField] private Transform controladorDisparo;
     [SerializeField] private AudioClip sonidoDisparo;
     [SerializeField] private HUD hud;
-    [SerializeField] private Controles controles;
+     private Controles controles;
+
+    [Header("campos para el dash")]
     [SerializeField] private Vector2 direccionJugador;
+    [SerializeField] private Vector2 rotaccionJugador;
     [SerializeField] private bool puedeHacerDash;
     [SerializeField] private bool sePuedeMover;
-    [SerializeField] private int tiempoEspera;
     [SerializeField] private float velocidadDash;
     [SerializeField] private float duraccionDash;
 
@@ -31,6 +34,7 @@ public class ControladorJugador : MonoBehaviour
 
     private void Awake()
     {
+        sePuedeMover = true;
         puedeHacerDash = true;
         rb = GetComponent<Rigidbody2D>();
         controles= new Controles();
@@ -48,7 +52,15 @@ public class ControladorJugador : MonoBehaviour
 
         controles.Juego.Dash.started += Dash;
 
-       
+        controles.Juego.Rotar.performed += RotarJugador;
+
+        controles.Juego.Rotar.canceled += RotarJugador;
+    }
+
+    private void RotarJugador(InputAction.CallbackContext obj)
+    {
+        Vector2 rotateDir = obj.ReadValue<Vector2>();
+        Debug.Log(rotateDir);
     }
 
     private void Dash(InputAction.CallbackContext obj)
@@ -63,13 +75,18 @@ public class ControladorJugador : MonoBehaviour
     private IEnumerator Dash2()
     {
         puedeHacerDash = false;
+        sePuedeMover = false;
         rb.gravityScale = 0;
-        rb.velocity = new Vector2(transform.localScale.x* velocidadDash, 0);
+        Debug.Log("esto antes"+rb.velocity);
+        rb.velocity =direccionJugador.normalized* velocidadDash;
+        Debug.Log("esto despues" + rb.velocity);
 
 
 
         yield return new WaitForSeconds(duraccionDash);
         rb.velocity = Vector2.zero;
+        sePuedeMover = true;
+
         puedeHacerDash = true;
 
 
@@ -99,7 +116,12 @@ public class ControladorJugador : MonoBehaviour
         transform.position = new Vector3(x,y,0);
 
         //rb.velocity = new Vector2(direccionJugador.x, direccionJugador.y);
-       gameObject.transform.Translate(new Vector2(direccionJugador.x, direccionJugador.y) *velocidad*Time.deltaTime);
+        if (sePuedeMover)
+        {
+            //gameObject.transform.Translate(new Vector2(direccionJugador.x, direccionJugador.y) *velocidad*Time.deltaTime);
+            float anguloRad = Mathf.Atan2(rotaccionJugador.y, rotaccionJugador.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * anguloRad);
+        }
         if (Input.GetKey(KeyCode.Space)&&puedeHacerDash)
         {
             Debug.Log("se pulsa espacio");
@@ -107,12 +129,17 @@ public class ControladorJugador : MonoBehaviour
             // StartCoroutine(Dash());
         }
 
-    }
-   /* private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(direccionJugador.x*velocidad, direccionJugador.y* velocidad);
-    }*/
 
+    }
+    private void FixedUpdate()
+    {
+        if (sePuedeMover)
+        {
+           
+            rb.velocity = new Vector2(direccionJugador.x * velocidad, direccionJugador.y * velocidad);
+            
+        }
+    }
 
 
     /* private IEnumerator Dash()
@@ -152,7 +179,8 @@ public class ControladorJugador : MonoBehaviour
                   {
                       bala.transform.position = controladorDisparo.position;
                       bala.SetActive(true);
-                  }
+                      AudioManager.Instance.ReproducirSonido(sonidoDisparo);
+                }
                   //else
                   //{
                       // Si no se encuentra más balas disponibles, puedes romper el bucle o tomar alguna otra acción
@@ -180,7 +208,7 @@ public class ControladorJugador : MonoBehaviour
             GameManager.Instance.municion++;
           }
           */
-          AudioManager.Instance.ReproducirSonido(sonidoDisparo);
+          
         }
     }
 }

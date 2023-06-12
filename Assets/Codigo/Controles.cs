@@ -53,6 +53,15 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotar"",
+                    ""type"": ""Value"",
+                    ""id"": ""d404681e-e8db-49d8-a058-23a815917a2a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -220,6 +229,61 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""48d838bf-9cf8-4a3b-9292-91fe50ce8aec"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b1d3c090-2e3c-4219-9402-f3c754919d0b"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c64eadce-9409-4624-814d-6da7992d020c"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1c82039e-ad51-4881-a3d3-6d794bee0743"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3905a7c3-2c0e-49bd-b49f-00ce38b5f6bd"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -231,6 +295,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         m_Juego_Movmiento = m_Juego.FindAction("Movmiento", throwIfNotFound: true);
         m_Juego_disparo = m_Juego.FindAction("disparo", throwIfNotFound: true);
         m_Juego_Dash = m_Juego.FindAction("Dash", throwIfNotFound: true);
+        m_Juego_Rotar = m_Juego.FindAction("Rotar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +358,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     private readonly InputAction m_Juego_Movmiento;
     private readonly InputAction m_Juego_disparo;
     private readonly InputAction m_Juego_Dash;
+    private readonly InputAction m_Juego_Rotar;
     public struct JuegoActions
     {
         private @Controles m_Wrapper;
@@ -300,6 +366,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         public InputAction @Movmiento => m_Wrapper.m_Juego_Movmiento;
         public InputAction @disparo => m_Wrapper.m_Juego_disparo;
         public InputAction @Dash => m_Wrapper.m_Juego_Dash;
+        public InputAction @Rotar => m_Wrapper.m_Juego_Rotar;
         public InputActionMap Get() { return m_Wrapper.m_Juego; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -318,6 +385,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDash;
+                @Rotar.started -= m_Wrapper.m_JuegoActionsCallbackInterface.OnRotar;
+                @Rotar.performed -= m_Wrapper.m_JuegoActionsCallbackInterface.OnRotar;
+                @Rotar.canceled -= m_Wrapper.m_JuegoActionsCallbackInterface.OnRotar;
             }
             m_Wrapper.m_JuegoActionsCallbackInterface = instance;
             if (instance != null)
@@ -331,6 +401,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Rotar.started += instance.OnRotar;
+                @Rotar.performed += instance.OnRotar;
+                @Rotar.canceled += instance.OnRotar;
             }
         }
     }
@@ -340,5 +413,6 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         void OnMovmiento(InputAction.CallbackContext context);
         void OnDisparo(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnRotar(InputAction.CallbackContext context);
     }
 }
