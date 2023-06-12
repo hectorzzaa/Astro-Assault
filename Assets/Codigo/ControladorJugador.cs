@@ -12,6 +12,7 @@ public class ControladorJugador : MonoBehaviour
 {
 
     [SerializeField] private float velocidad;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float xMinimo, xMaximo;
     [SerializeField] private float yMinimo, yMaximo;
     //[SerializeField] private GameObject bala;
@@ -19,9 +20,19 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private AudioClip sonidoDisparo;
     [SerializeField] private HUD hud;
     [SerializeField] private Controles controles;
-    [SerializeField] private Vector2 pruebavector;
+    [SerializeField] private Vector2 direccionJugador;
+    [SerializeField] private bool puedeHacerDash;
+    [SerializeField] private bool sePuedeMover;
+    [SerializeField] private int tiempoEspera;
+    [SerializeField] private float velocidadDash;
+    [SerializeField] private float duraccionDash;
+
+
+
     private void Awake()
     {
+        puedeHacerDash = true;
+        rb = GetComponent<Rigidbody2D>();
         controles= new Controles();
         
     }
@@ -33,16 +44,41 @@ public class ControladorJugador : MonoBehaviour
         //cuando dejo de moverlo vuelve a 0
         controles.Juego.Movmiento.canceled+=moverJugador;
         //En este caso solo detecta cuando lo pulso
-        controles.Juego.disparo.started+=disparar; 
+        controles.Juego.disparo.started+=disparar;
+
+        controles.Juego.Dash.started += Dash;
+
+       
     }
 
-    
+    private void Dash(InputAction.CallbackContext obj)
+    {
+        if (puedeHacerDash)
+        {
+        StartCoroutine(Dash2());
+
+        }
+    }
+
+    private IEnumerator Dash2()
+    {
+        puedeHacerDash = false;
+        rb.gravityScale = 0;
+        rb.velocity = new Vector2(transform.localScale.x* velocidadDash, 0);
+
+
+
+        yield return new WaitForSeconds(duraccionDash);
+        rb.velocity = Vector2.zero;
+        puedeHacerDash = true;
+
+
+    }
 
     private void moverJugador(InputAction.CallbackContext obj)
     {
         Vector2 moveDir = obj.ReadValue<Vector2>();
-        Debug.Log(moveDir);
-        pruebavector= moveDir;
+        direccionJugador = moveDir;
     }
 
     void Start()
@@ -62,12 +98,32 @@ public class ControladorJugador : MonoBehaviour
         //Con el rango de valores estableido me aseguro que el objeto no pueda salir de la camara
         transform.position = new Vector3(x,y,0);
 
-
-        gameObject.transform.Translate(new Vector2(pruebavector.x, pruebavector.y) *velocidad*Time.deltaTime);
-
+        //rb.velocity = new Vector2(direccionJugador.x, direccionJugador.y);
+       gameObject.transform.Translate(new Vector2(direccionJugador.x, direccionJugador.y) *velocidad*Time.deltaTime);
+        if (Input.GetKey(KeyCode.Space)&&puedeHacerDash)
+        {
+            Debug.Log("se pulsa espacio");
+            //StartCoroutine(Dash2());
+            // StartCoroutine(Dash());
+        }
 
     }
+   /* private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(direccionJugador.x*velocidad, direccionJugador.y* velocidad);
+    }*/
 
+
+
+    /* private IEnumerator Dash()
+     {
+         sePuedeMover = false;
+         puedeHacerDash = false;
+         yield return new WaitForSeconds(1);
+         sePuedeMover = true;
+         puedeHacerDash = true;
+         transform.position = new Vector2(20*transform.localScale.x,0);
+     }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

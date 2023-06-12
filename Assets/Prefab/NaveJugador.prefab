@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2061523792770288330}
   - component: {fileID: 2061523792770288331}
   - component: {fileID: 6433072239226462727}
+  - component: {fileID: -9059796466092845166}
   m_Layer: 0
   m_Name: NaveJugador
   m_TagString: Jugador
@@ -99,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eef100ebd2bd54c83e661a00ddbb8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 25
+  velocidad: 30
+  rb: {fileID: 0}
   xMinimo: -36
   xMaximo: 36
   yMinimo: -19
@@ -107,6 +109,12 @@ MonoBehaviour:
   controladorDisparo: {fileID: 2061523794019557044}
   sonidoDisparo: {fileID: 8300000, guid: 97680ac3127f1a44fbe3fc848f38e2de, type: 3}
   hud: {fileID: 0}
+  direccionJugador: {x: 0, y: 0}
+  puedeHacerDash: 1
+  sePuedeMover: 0
+  tiempoEspera: 0
+  velocidadDash: 3
+  duraccionDash: 0.4
 --- !u!61 &6433072239226462727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,6 +141,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.54, y: 0.35}
   m_EdgeRadius: 0
+--- !u!50 &-9059796466092845166
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061523792770288329}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2061523794019557045
 GameObject:
   m_ObjectHideFlags: 0

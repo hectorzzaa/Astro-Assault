@@ -21,7 +21,10 @@ using UnityEngine.UI;
 
     //[SerializeField] private int id;
 
-
+    public void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
     public float getVida()
     {
         return vida;
@@ -65,7 +68,7 @@ using UnityEngine.UI;
         if (collision.CompareTag("FinalAbajo"))
         {
             //gestionarPuntos(getPuntos());
-            Destroy(this.gameObject);
+           // Destroy(this.gameObject);
         }
         //con la colision se establece que cuando colisione con el enemigo este se destuya y
         //llame a la instancia del GameManager y al metodo de recibir daño

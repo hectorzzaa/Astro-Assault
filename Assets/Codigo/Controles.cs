@@ -44,6 +44,15 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e70d706-a9cd-4199-bb82-7de114492e1b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -114,6 +123,61 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8b850d2e-0b32-46bc-b620-bf3677d364f7"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movmiento"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""1e38cff8-071e-4c04-a5f2-c9d9476ef3a6"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movmiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""73fc83d3-7abe-4a40-b968-cc96e19ec128"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movmiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4a583ad6-9432-4759-8087-ce83e23919e5"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movmiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4ab540e4-39a4-44e5-8eb6-fa808c8c92db"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movmiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""cea1f35c-7803-4857-ab8d-0e8fb2ffdd77"",
                     ""path"": ""<Keyboard>/e"",
@@ -134,6 +198,28 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""action"": ""disparo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e70bd1da-0b2e-43cc-9419-d51e4773d565"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6273292a-bb7c-405d-867a-bf35d0ead23f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -144,6 +230,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         m_Juego = asset.FindActionMap("Juego", throwIfNotFound: true);
         m_Juego_Movmiento = m_Juego.FindAction("Movmiento", throwIfNotFound: true);
         m_Juego_disparo = m_Juego.FindAction("disparo", throwIfNotFound: true);
+        m_Juego_Dash = m_Juego.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,12 +292,14 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     private IJuegoActions m_JuegoActionsCallbackInterface;
     private readonly InputAction m_Juego_Movmiento;
     private readonly InputAction m_Juego_disparo;
+    private readonly InputAction m_Juego_Dash;
     public struct JuegoActions
     {
         private @Controles m_Wrapper;
         public JuegoActions(@Controles wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movmiento => m_Wrapper.m_Juego_Movmiento;
         public InputAction @disparo => m_Wrapper.m_Juego_disparo;
+        public InputAction @Dash => m_Wrapper.m_Juego_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Juego; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -226,6 +315,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @disparo.started -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDisparo;
                 @disparo.performed -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDisparo;
                 @disparo.canceled -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDisparo;
+                @Dash.started -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_JuegoActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_JuegoActionsCallbackInterface = instance;
             if (instance != null)
@@ -236,6 +328,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @disparo.started += instance.OnDisparo;
                 @disparo.performed += instance.OnDisparo;
                 @disparo.canceled += instance.OnDisparo;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -244,5 +339,6 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     {
         void OnMovmiento(InputAction.CallbackContext context);
         void OnDisparo(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

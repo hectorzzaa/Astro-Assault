@@ -23,11 +23,6 @@ public class ControlBalaJugador : MonoBehaviour
     }
 
 
-    public void dispararJugador()
-    {
-        
-    }
-
 
 
 

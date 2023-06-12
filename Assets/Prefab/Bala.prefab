@@ -117,4 +117,4 @@ MonoBehaviour:
   velocidad: 25
   "da\xF1o": 0
   cantidadPuntos: 10
-  puntaje: {fileID: 0}
+  sonidoDisparo: {fileID: 8300000, guid: 5b7659f23bdc9a5429b652d2b9523718, type: 3}

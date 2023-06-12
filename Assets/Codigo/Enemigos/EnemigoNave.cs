@@ -4,25 +4,30 @@ using UnityEngine;
 
  class EnemigoNave : Enemigo
 {
-    [SerializeField] private float timer;
+    
     [Header("Obejtos")]
     [SerializeField] private Transform controladorDisparoEnemigo;
     [SerializeField] private GameObject controlNivel;
     [SerializeField] private GameObject jugador;
     [Header("Valores necesarios")]
-    [SerializeField] private float distanciaObjeto = 50f;
-    [SerializeField] private float rangoDisparo = 5f;
-    [SerializeField] private float velocidadMovimiento = 5f;
-    [SerializeField] private bool haDisparado=false;
-    [SerializeField] private bool puedeMoverse=true;
+    [SerializeField] private float timer;
+    [SerializeField] private int distanciaMaximaObjetivo;
+    [SerializeField] private float velocidadMovimiento ;
+    [SerializeField] private float velocidadBala;
 
-     private void Start()
+    private void OnBecameVisible()
+    {
+        Debug.Log("soy visible");
+        disparar();
+    }
+
+    private void Start()
     {
 
         jugador = GameObject.FindGameObjectWithTag("Jugador");
 
         //gameObject.transform.position = new Vector3(0.19F, 10F, 0);
-        haDisparado = false;
+
     }
 
 
@@ -31,42 +36,30 @@ using UnityEngine;
         //transform.Translate(Vector2.down * 10 * Time.deltaTime);
          SeguirJugador();
         
-
-        /*if (jugador != null)
-        {
-            float distancia = Vector3.Distance(transform.position, jugador.transform.position);
-
-            if (distancia <= rangoDisparo && transform.position.y>-6)
-            {
-                timer += Time.deltaTime;
-                while (timer >= 1)
-                {
-                    timer = 0;
-                disparar();
-                    haDisparado = true;
-        
-                }
-            }
-        }*/
-
-
-       
-
-
     }
     private void SeguirJugador()
     {
         float distancia = Vector3.Distance(transform.position, jugador.transform.position);
-       
-        if (distancia < 25)
+        
+        if (distancia < distanciaMaximaObjetivo)
         {
-            transform.position = this.transform.position;
+            if (distancia > 20)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, jugador.transform.position, velocidadMovimiento * Time.deltaTime);
+            }
+            else
+            {
+                // Solo moverse en el eje X
+                Vector3 direccionMovimiento = new Vector3(jugador.transform.position.x - transform.position.x, 0f, 0f);
+                transform.position += direccionMovimiento.normalized * velocidadMovimiento * Time.deltaTime;
+            }
+
             disparar();
-            
+
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, jugador.transform.position, 10 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, jugador.transform.position, velocidadMovimiento * Time.deltaTime);
 
         }
        
@@ -74,18 +67,7 @@ using UnityEngine;
 
 
 
-        /* Vector3 jugadorObjetivo = naveJugador.transform.position;
-         Vector3 direccion = (jugadorObjetivo - transform.position).normalized;
-         Vector3 nuevaPosicion = transform.position + direccion * velocidadMovimiento * Time.deltaTime;
-
-         // Mantener la distancia deseada entre el objeto y el jugador
-         if (Vector3.Distance(nuevaPosicion, jugadorObjetivo) > distanciaObjeto)
-         {
-             nuevaPosicion = jugadorObjetivo + (nuevaPosicion - jugadorObjetivo).normalized * distanciaObjeto;
-         }
-
-         transform.position = nuevaPosicion;*/
-
+       
     }
 
     private void OnDestroy()
@@ -142,14 +124,14 @@ using UnityEngine;
                     ControladorBalaEnemigo controlBala = bala.GetComponent<ControladorBalaEnemigo>();
 
                     controlBala.SetDirection(jugadorObjetivo.normalized);
-                    controlBala.SetDirectionAndSpeed(jugadorObjetivo.normalized, 30);
+                    controlBala.SetDirectionAndSpeed(jugadorObjetivo.normalized, velocidadBala);
                     bala.transform.position = controladorDisparoEnemigo.position;
                     bala.SetActive(true);
                        
                 }
                 
                 yield return new WaitForSeconds(retardo);
-                haDisparado = true;
+
             }
              
             }
