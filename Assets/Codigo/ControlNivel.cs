@@ -29,9 +29,9 @@ public class ControlNivel : MonoBehaviour
     {
 
 
-        Vector2 positionJugador = new Vector2(0.19F, -2.58F);
+       /* Vector2 positionJugador = new Vector2(0.19F, -2.58F);
         Quaternion rotationJugador = new Quaternion();
-        Instantiate(jugador, positionJugador, rotationJugador);
+        Instantiate(jugador, positionJugador, rotationJugador);*/
 
 
         EnemigoNave eneNaveComponent = eneNave.GetComponent<EnemigoNave>();

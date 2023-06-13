@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-class EnemigoPiedra : Enemigo
+public class EnemigoPiedra : Enemigo
 {
     //[SerializeField] private GameObject prueba;
     /*public EnemigoPiedra(int vida, string tipoAtaque, bool puedeDisparar)

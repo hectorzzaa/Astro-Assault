@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
-   
+    public event EventHandler MuerteJugador;
+
 
     public static GameManager Instance { get; private set; }
     [Header("Configuracion puntos usuarios y vidas")]
@@ -115,9 +118,8 @@ public class GameManager : MonoBehaviour
             listaObjetosJugador.Add(objeto);
         }
     }
-  
-    
-    public GameObject GetListaObjetosJugador()
+
+        public GameObject GetListaObjetosJugador()
     {
         //Recorro la lista
         for (int i = 0; i < listaObjetosJugador.Count; i++)
@@ -151,22 +153,29 @@ public class GameManager : MonoBehaviour
     {
 
         vidas-= 1;
-        if (vidas == 0)
+        if (vidas <= 0)
         {
             //Si las vidas son 0 se carga la escena del menu principal
             puntosUsuarios = puntosTotales;
-           
-           /* naveJugador.SetActive(false);
-            hud.ActivarInput();*/
-            //GuardarJson(jugador,"prueba");
-           // var p= hud.guardarNombre();
 
-            SceneManager.LoadScene(3);
+            /* naveJugador.SetActive(false);
+             hud.ActivarInput();*/
+            //GuardarJson(jugador,"prueba");
+            // var p= hud.guardarNombre();
+
+
+
+            MuerteJugador?.Invoke(this,EventArgs.Empty);
+            //SceneManager.LoadScene(3);
 
            
         }
         //Se llama a un metodo en el hud para que se quite una vida visual
+        if(vidas > 0)
+        {
         hud.DescativarVidas(vidas);
+
+        }
     }
     //Metodo que sirve para detectar cuando se debe subir la vida
     public void RecuperarVidas()

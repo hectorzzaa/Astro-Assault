@@ -30,4 +30,8 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(audio);
     }
+    public void PararMusica()
+    {
+        audioSource.Stop();
+    }
 }

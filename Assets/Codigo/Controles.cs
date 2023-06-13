@@ -286,6 +286,45 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""MenuInsertar"",
+            ""id"": ""452c4083-675d-4ed2-a460-8c2331ac849a"",
+            ""actions"": [
+                {
+                    ""name"": ""Aceptar"",
+                    ""type"": ""Button"",
+                    ""id"": ""94cdfc58-f312-4b84-8e9b-4763b8054a8c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b0df3457-e9f0-43a7-98e7-8272d5f553ca"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d50512d2-5c93-4e3b-9f14-3385f0aa6dd4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -296,6 +335,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         m_Juego_disparo = m_Juego.FindAction("disparo", throwIfNotFound: true);
         m_Juego_Dash = m_Juego.FindAction("Dash", throwIfNotFound: true);
         m_Juego_Rotar = m_Juego.FindAction("Rotar", throwIfNotFound: true);
+        // MenuInsertar
+        m_MenuInsertar = asset.FindActionMap("MenuInsertar", throwIfNotFound: true);
+        m_MenuInsertar_Aceptar = m_MenuInsertar.FindAction("Aceptar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -408,11 +450,48 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         }
     }
     public JuegoActions @Juego => new JuegoActions(this);
+
+    // MenuInsertar
+    private readonly InputActionMap m_MenuInsertar;
+    private IMenuInsertarActions m_MenuInsertarActionsCallbackInterface;
+    private readonly InputAction m_MenuInsertar_Aceptar;
+    public struct MenuInsertarActions
+    {
+        private @Controles m_Wrapper;
+        public MenuInsertarActions(@Controles wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Aceptar => m_Wrapper.m_MenuInsertar_Aceptar;
+        public InputActionMap Get() { return m_Wrapper.m_MenuInsertar; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuInsertarActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuInsertarActions instance)
+        {
+            if (m_Wrapper.m_MenuInsertarActionsCallbackInterface != null)
+            {
+                @Aceptar.started -= m_Wrapper.m_MenuInsertarActionsCallbackInterface.OnAceptar;
+                @Aceptar.performed -= m_Wrapper.m_MenuInsertarActionsCallbackInterface.OnAceptar;
+                @Aceptar.canceled -= m_Wrapper.m_MenuInsertarActionsCallbackInterface.OnAceptar;
+            }
+            m_Wrapper.m_MenuInsertarActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Aceptar.started += instance.OnAceptar;
+                @Aceptar.performed += instance.OnAceptar;
+                @Aceptar.canceled += instance.OnAceptar;
+            }
+        }
+    }
+    public MenuInsertarActions @MenuInsertar => new MenuInsertarActions(this);
     public interface IJuegoActions
     {
         void OnMovmiento(InputAction.CallbackContext context);
         void OnDisparo(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnRotar(InputAction.CallbackContext context);
+    }
+    public interface IMenuInsertarActions
+    {
+        void OnAceptar(InputAction.CallbackContext context);
     }
 }

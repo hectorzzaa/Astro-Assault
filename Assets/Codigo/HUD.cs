@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 public class HUD : MonoBehaviour
 {
@@ -20,11 +21,49 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoNombre;
     [SerializeField] private TextMeshProUGUI textoPuntuacion;
     [SerializeField] private GameObject input;
-    [SerializeField] private GameObject boton;
+  
     [SerializeField] private bool insertado;
+    private Controles controles;
 
-    
-    
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "EscenaInsertar")
+        {
+            controles = new Controles();
+            if (GameManager.puntosUsuarios == 0)
+            {
+                input.SetActive(false);
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (SceneManager.GetActiveScene().name == "EscenaInsertar")
+        {
+            controles.MenuInsertar.Enable();
+            controles.MenuInsertar.Aceptar.started+=InsertarNombre;
+
+        }
+    }
+
+    private void InsertarNombre(InputAction.CallbackContext obj)
+    {
+        Debug.Log("input1 " + textoUsuario.text);
+
+       
+
+            List<JugadorData> jugadores = new List<JugadorData>();
+            jugadores.Add(new JugadorData { usuario = textoUsuario.text, puntuacion = GameManager.puntosUsuarios });
+
+
+
+            GameManager.Instance.GuardarJson(jugadores, nombreArchivo);
+            mostrarTabla();
+            insertado = false;
+        
+    }
+
     //El metodo sirve para que que al ser llamado desactive el indice del array
     //por ejemplo al perde una vida se desactiva la posicion 2
     public void DescativarVidas(int numVida)
@@ -44,14 +83,7 @@ public class HUD : MonoBehaviour
         textoPuntos.text ="Puntos: "+ puntos.ToString();
     }
 
-    public void ActivarInput()
-    {
-        input.SetActive(true);
-    }
-    public void DesactivarInput()
-    {
-        input.SetActive(false);
-    }
+    
 
     public string guardarNombre()
     {
@@ -94,10 +126,12 @@ public class HUD : MonoBehaviour
     }
     private void Update()
     {
-        if (!insertado&& SceneManager.GetActiveScene().name == "EscenaInsertar")
+        if (SceneManager.GetActiveScene().name == "EscenaInsertar")
         {
-            boton.SetActive(false);
-            input.SetActive(false);
+            if (GameManager.puntosUsuarios > 0)
+            {
+                input.SetActive(true);
+            }
         }
     }
 
@@ -110,12 +144,17 @@ public class HUD : MonoBehaviour
 
         string textoNombreCompleto = "";
         string textoPuntuacionCompleta = "";
+        int indice = 1;
         foreach (JugadorData jugador in jugadores2)
         {
-            Debug.Log(jugador.usuario + ": " + jugador.puntuacion);
-            textoNombreCompleto += jugador.usuario + "\n";
+            if (indice >= 6)
+            {
+                break;
+            }
+            Debug.Log( jugador.usuario + ": " + jugador.puntuacion);
+            textoNombreCompleto +=indice+": "+ jugador.usuario + "\n";
             textoPuntuacionCompleta += jugador.puntuacion + "\n";
-
+            indice++;
         }
         textoNombre.text = textoNombreCompleto;
         textoPuntuacion.text = textoPuntuacionCompleta;

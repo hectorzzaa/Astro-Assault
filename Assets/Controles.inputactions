@@ -264,6 +264,45 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "MenuInsertar",
+            "id": "452c4083-675d-4ed2-a460-8c2331ac849a",
+            "actions": [
+                {
+                    "name": "Aceptar",
+                    "type": "Button",
+                    "id": "94cdfc58-f312-4b84-8e9b-4763b8054a8c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b0df3457-e9f0-43a7-98e7-8272d5f553ca",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aceptar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d50512d2-5c93-4e3b-9f14-3385f0aa6dd4",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aceptar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

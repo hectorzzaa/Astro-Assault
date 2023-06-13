@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
- class  Enemigo: MonoBehaviour
+ public class  Enemigo: MonoBehaviour
 {
 
 

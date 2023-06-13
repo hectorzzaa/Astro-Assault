@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
- class EnemigoNave : Enemigo
+ public class EnemigoNave : Enemigo
 {
     
     [Header("Obejtos")]
