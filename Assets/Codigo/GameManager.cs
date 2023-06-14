@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
                      public int cantidadBalasJuagador;
                      public int municion;
                      public int municionMax;
-
+    [SerializeField] private EventSystem eventSystem;
 
 
 
@@ -68,12 +68,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-
+        eventSystem = EventSystem.current;
         ListarBalas(cantidadBalasEnemigo);
         ListarBalasJugador(cantidadBalasJuagador);
         municionMax = cantidadBalasJuagador;
 
     }
+    public void CambiarElementoEvento(GameObject objetoSeleccionado)
+    {
+        // Cambia el primer objeto seleccionado
+        eventSystem.firstSelectedGameObject = objetoSeleccionado;
+    }
+
+
     public void ListarBalas(int balas)
     {
         for (int i = 0; i < balas; i++)
@@ -151,12 +158,11 @@ public class GameManager : MonoBehaviour
     //Metodo que sirve para detectar cuando se debe bajar la vida
     public void RecibirDaño()
     {
-         if (ControladorJugador.recibeDaño)
-        {
-
+        
         
         vidas-= 1;
-        if (vidas <= 0)
+            
+        if (vidas == 0)
         {
             //Si las vidas son 0 se carga la escena del menu principal
             puntosUsuarios = puntosTotales;
@@ -170,16 +176,11 @@ public class GameManager : MonoBehaviour
 
             MuerteJugador?.Invoke(this,EventArgs.Empty);
             //SceneManager.LoadScene(3);
-            hud.DescativarVidas(vidas);
 
         }
         //Se llama a un metodo en el hud para que se quite una vida visual
-        else
-        {
         hud.DescativarVidas(vidas);
 
-        }
-        }
     }
     //Metodo que sirve para detectar cuando se debe subir la vida
     public void RecuperarVidas()

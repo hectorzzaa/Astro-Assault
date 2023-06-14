@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOverControlador : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
-
+    [SerializeField] private GameObject objetoEvento;
     // Start is called before the first frame update
     
     private void Start()
@@ -18,7 +18,7 @@ public class GameOverControlador : MonoBehaviour
     private void ActivarMenu(object sender, EventArgs e)
     {
        menu.SetActive(true);
-       
+        GameManager.Instance.CambiarElementoEvento(objetoEvento);
         Time.timeScale = 0f;
         AudioManager.Instance.PararMusica();
     }

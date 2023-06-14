@@ -325,6 +325,307 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MenuPausa"",
+            ""id"": ""cbf9c983-a8d3-4533-b3f1-43a7483914da"",
+            ""actions"": [
+                {
+                    ""name"": ""EntrarMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb066835-2d3a-48a7-a1e0-eed9b1d1d42c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Moverse"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5b360509-c87e-4c62-a996-3607f960b4ff"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SalirMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""358a59a6-438b-469f-b037-39c3ce3608ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aceptar"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c35599f-dbf7-45fd-a865-088560e1ae95"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""62e51c95-de9f-4445-9938-e3fc03fc9d26"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EntrarMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbbfd41c-204d-4718-b66f-8bd2c33fe62f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EntrarMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""87076c5d-81b7-49e9-9172-0f6f0ff30920"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d7c04082-93b0-4adc-b05f-f68c257b8d05"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""52ba7975-ee43-4f72-bddb-eb8253b7d69e"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9e897a5b-bd99-49ed-8dc4-01dbfc8ffc9f"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""76037be8-8935-43e1-9dd2-f0baa549a41b"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Teclas"",
+                    ""id"": ""4f414e01-9e5b-454f-b9ad-39c2e71b8904"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""6d6e3995-0570-48d8-9d9d-6e163c8230fa"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1385c96d-5250-402f-8ef8-e7e6b4bb4ea4"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""510e4562-c1a3-445c-8189-96c49a2d7712"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b7d69d35-a2aa-4e6e-a387-edc82f276440"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b54bfad5-e2bb-44a2-b9e4-3b030db26be5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SalirMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e88b169-44e6-4a76-a0a3-1f295d83af8d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33724935-bcdd-42bf-afa6-48c9fb403c42"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MenuPrincipal"",
+            ""id"": ""523104cd-5e50-4ff5-a118-9d9c7e69f277"",
+            ""actions"": [
+                {
+                    ""name"": ""Moverse"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""af02ea09-fab0-4072-8eb4-9a2539c9b101"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aceptar"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa4fb873-077f-4720-99d4-85db50e80121"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""1c9c2af7-ebcb-4467-a9b4-cde370e57277"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""bafcbfaa-ac12-4f8c-8c86-a3638c6c9911"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""6c208d47-f1d6-4c5d-9260-61549a64850b"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""70a19ea4-ee66-4bb0-8ad0-af4b6edd7312"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d4bc1f56-0137-4787-9516-6928dcfd569b"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34842dda-344f-4164-8768-45d1f4d96c43"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -338,6 +639,16 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         // MenuInsertar
         m_MenuInsertar = asset.FindActionMap("MenuInsertar", throwIfNotFound: true);
         m_MenuInsertar_Aceptar = m_MenuInsertar.FindAction("Aceptar", throwIfNotFound: true);
+        // MenuPausa
+        m_MenuPausa = asset.FindActionMap("MenuPausa", throwIfNotFound: true);
+        m_MenuPausa_EntrarMenu = m_MenuPausa.FindAction("EntrarMenu", throwIfNotFound: true);
+        m_MenuPausa_Moverse = m_MenuPausa.FindAction("Moverse", throwIfNotFound: true);
+        m_MenuPausa_SalirMenu = m_MenuPausa.FindAction("SalirMenu", throwIfNotFound: true);
+        m_MenuPausa_Aceptar = m_MenuPausa.FindAction("Aceptar", throwIfNotFound: true);
+        // MenuPrincipal
+        m_MenuPrincipal = asset.FindActionMap("MenuPrincipal", throwIfNotFound: true);
+        m_MenuPrincipal_Moverse = m_MenuPrincipal.FindAction("Moverse", throwIfNotFound: true);
+        m_MenuPrincipal_Aceptar = m_MenuPrincipal.FindAction("Aceptar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -483,6 +794,104 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         }
     }
     public MenuInsertarActions @MenuInsertar => new MenuInsertarActions(this);
+
+    // MenuPausa
+    private readonly InputActionMap m_MenuPausa;
+    private IMenuPausaActions m_MenuPausaActionsCallbackInterface;
+    private readonly InputAction m_MenuPausa_EntrarMenu;
+    private readonly InputAction m_MenuPausa_Moverse;
+    private readonly InputAction m_MenuPausa_SalirMenu;
+    private readonly InputAction m_MenuPausa_Aceptar;
+    public struct MenuPausaActions
+    {
+        private @Controles m_Wrapper;
+        public MenuPausaActions(@Controles wrapper) { m_Wrapper = wrapper; }
+        public InputAction @EntrarMenu => m_Wrapper.m_MenuPausa_EntrarMenu;
+        public InputAction @Moverse => m_Wrapper.m_MenuPausa_Moverse;
+        public InputAction @SalirMenu => m_Wrapper.m_MenuPausa_SalirMenu;
+        public InputAction @Aceptar => m_Wrapper.m_MenuPausa_Aceptar;
+        public InputActionMap Get() { return m_Wrapper.m_MenuPausa; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuPausaActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuPausaActions instance)
+        {
+            if (m_Wrapper.m_MenuPausaActionsCallbackInterface != null)
+            {
+                @EntrarMenu.started -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnEntrarMenu;
+                @EntrarMenu.performed -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnEntrarMenu;
+                @EntrarMenu.canceled -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnEntrarMenu;
+                @Moverse.started -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnMoverse;
+                @Moverse.performed -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnMoverse;
+                @Moverse.canceled -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnMoverse;
+                @SalirMenu.started -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnSalirMenu;
+                @SalirMenu.performed -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnSalirMenu;
+                @SalirMenu.canceled -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnSalirMenu;
+                @Aceptar.started -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnAceptar;
+                @Aceptar.performed -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnAceptar;
+                @Aceptar.canceled -= m_Wrapper.m_MenuPausaActionsCallbackInterface.OnAceptar;
+            }
+            m_Wrapper.m_MenuPausaActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @EntrarMenu.started += instance.OnEntrarMenu;
+                @EntrarMenu.performed += instance.OnEntrarMenu;
+                @EntrarMenu.canceled += instance.OnEntrarMenu;
+                @Moverse.started += instance.OnMoverse;
+                @Moverse.performed += instance.OnMoverse;
+                @Moverse.canceled += instance.OnMoverse;
+                @SalirMenu.started += instance.OnSalirMenu;
+                @SalirMenu.performed += instance.OnSalirMenu;
+                @SalirMenu.canceled += instance.OnSalirMenu;
+                @Aceptar.started += instance.OnAceptar;
+                @Aceptar.performed += instance.OnAceptar;
+                @Aceptar.canceled += instance.OnAceptar;
+            }
+        }
+    }
+    public MenuPausaActions @MenuPausa => new MenuPausaActions(this);
+
+    // MenuPrincipal
+    private readonly InputActionMap m_MenuPrincipal;
+    private IMenuPrincipalActions m_MenuPrincipalActionsCallbackInterface;
+    private readonly InputAction m_MenuPrincipal_Moverse;
+    private readonly InputAction m_MenuPrincipal_Aceptar;
+    public struct MenuPrincipalActions
+    {
+        private @Controles m_Wrapper;
+        public MenuPrincipalActions(@Controles wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Moverse => m_Wrapper.m_MenuPrincipal_Moverse;
+        public InputAction @Aceptar => m_Wrapper.m_MenuPrincipal_Aceptar;
+        public InputActionMap Get() { return m_Wrapper.m_MenuPrincipal; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuPrincipalActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuPrincipalActions instance)
+        {
+            if (m_Wrapper.m_MenuPrincipalActionsCallbackInterface != null)
+            {
+                @Moverse.started -= m_Wrapper.m_MenuPrincipalActionsCallbackInterface.OnMoverse;
+                @Moverse.performed -= m_Wrapper.m_MenuPrincipalActionsCallbackInterface.OnMoverse;
+                @Moverse.canceled -= m_Wrapper.m_MenuPrincipalActionsCallbackInterface.OnMoverse;
+                @Aceptar.started -= m_Wrapper.m_MenuPrincipalActionsCallbackInterface.OnAceptar;
+                @Aceptar.performed -= m_Wrapper.m_MenuPrincipalActionsCallbackInterface.OnAceptar;
+                @Aceptar.canceled -= m_Wrapper.m_MenuPrincipalActionsCallbackInterface.OnAceptar;
+            }
+            m_Wrapper.m_MenuPrincipalActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Moverse.started += instance.OnMoverse;
+                @Moverse.performed += instance.OnMoverse;
+                @Moverse.canceled += instance.OnMoverse;
+                @Aceptar.started += instance.OnAceptar;
+                @Aceptar.performed += instance.OnAceptar;
+                @Aceptar.canceled += instance.OnAceptar;
+            }
+        }
+    }
+    public MenuPrincipalActions @MenuPrincipal => new MenuPrincipalActions(this);
     public interface IJuegoActions
     {
         void OnMovmiento(InputAction.CallbackContext context);
@@ -492,6 +901,18 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     }
     public interface IMenuInsertarActions
     {
+        void OnAceptar(InputAction.CallbackContext context);
+    }
+    public interface IMenuPausaActions
+    {
+        void OnEntrarMenu(InputAction.CallbackContext context);
+        void OnMoverse(InputAction.CallbackContext context);
+        void OnSalirMenu(InputAction.CallbackContext context);
+        void OnAceptar(InputAction.CallbackContext context);
+    }
+    public interface IMenuPrincipalActions
+    {
+        void OnMoverse(InputAction.CallbackContext context);
         void OnAceptar(InputAction.CallbackContext context);
     }
 }

@@ -31,6 +31,8 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private float velocidadDash;
     [SerializeField] private float duraccionDash;
                      public static bool recibeDaño;
+                     public static bool puedeDisparar=true;
+
 
 
 

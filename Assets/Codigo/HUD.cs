@@ -125,7 +125,7 @@ public class HUD : MonoBehaviour
         {
             seHaEscrito = false;
             insertado = true;
-            GameManager.Instance.EscribirJsonVacio(nombreArchivo);
+            //GameManager.Instance.EscribirJsonVacio(nombreArchivo);
             mostrarTabla();
         }
 
