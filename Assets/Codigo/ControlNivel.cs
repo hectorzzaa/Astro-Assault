@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.FilePathAttribute;
+
 
 public class ControlNivel : MonoBehaviour
 {
@@ -20,18 +20,19 @@ public class ControlNivel : MonoBehaviour
     [Header("controlNaves")]
     [SerializeField]  int maxNaves;
     [SerializeField] public int numNaves;
-                     
+    [SerializeField] private bool haSubidoDif;
     float timer;
+    [SerializeField] private float timerNaveMax;
   
     float temporizadorVida;
 
     private void Start()
     {
-
-
-       /* Vector2 positionJugador = new Vector2(0.19F, -2.58F);
-        Quaternion rotationJugador = new Quaternion();
-        Instantiate(jugador, positionJugador, rotationJugador);*/
+        timerNaveMax = 3;
+        haSubidoDif = false;
+        /* Vector2 positionJugador = new Vector2(0.19F, -2.58F);
+         Quaternion rotationJugador = new Quaternion();
+         Instantiate(jugador, positionJugador, rotationJugador);*/
 
 
         EnemigoNave eneNaveComponent = eneNave.GetComponent<EnemigoNave>();
@@ -56,11 +57,21 @@ public class ControlNivel : MonoBehaviour
         //cada frame llama a los emtodos de spawn
          spawVida();
          spawnNave();
+        
          spawnPiedra();
+        subirDificultad();
 
+       
 
-
-
+    }
+    private void subirDificultad()
+    {
+        if (GameManager.Instance.puntosTotales > 50&&!haSubidoDif)
+        {
+            timerNaveMax = 1.5f;
+            GameManager.Instance.maxNaves += 5;
+            haSubidoDif=true;
+        }
     }
     private void spawVida()
     {
@@ -94,15 +105,12 @@ public class ControlNivel : MonoBehaviour
     {
         Vector3 a = this.transform.position;
         timer += Time.deltaTime;
-        while (GameManager.Instance.numNaves < GameManager.Instance.maxNaves && timer >= 3)
+        while (GameManager.Instance.numNaves < GameManager.Instance.maxNaves && timer >= timerNaveMax)
         {
             timer = 0;
+            Debug.Log("num naves: "+ GameManager.Instance.numNaves+" Num max: "+ GameManager.Instance.maxNaves);
             movimientoNave(a);
-            if (eneNave==null)
-            {
-                
-                numNaves--;
-            }
+            
         }
     }
 

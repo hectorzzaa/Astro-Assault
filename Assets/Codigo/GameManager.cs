@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public string nombreUsuario; 
     public static float puntosUsuarios;
 
-    [SerializeField] private float puntosTotales;
+    [SerializeField] public float puntosTotales;
     [SerializeField] private HUD hud;
 
     [SerializeField] public int vidas = 3;

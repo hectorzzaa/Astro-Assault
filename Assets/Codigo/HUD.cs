@@ -72,6 +72,8 @@ public class HUD : MonoBehaviour
     {
         
         Vidas[numVida].SetActive(false);
+
+        
     }
     //Funciona igual que el metodo desctivarVidas pero en este caso activa atarves del indice
     public void SumarVidas(int numVida)

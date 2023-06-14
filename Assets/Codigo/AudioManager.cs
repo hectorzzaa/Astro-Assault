@@ -34,4 +34,8 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.Stop();
     }
+    public void ReanudarMusica()
+    {
+        audioSource.Play();
+    }
 }
