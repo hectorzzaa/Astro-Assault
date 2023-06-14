@@ -23,6 +23,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject input;
   
     [SerializeField] private bool insertado;
+    [SerializeField] private bool seHaEscrito;
     private Controles controles;
 
     private void Awake()
@@ -61,7 +62,8 @@ public class HUD : MonoBehaviour
             GameManager.Instance.GuardarJson(jugadores, nombreArchivo);
             mostrarTabla();
             insertado = false;
-        
+            seHaEscrito = true;
+
     }
 
     //El metodo sirve para que que al ser llamado desactive el indice del array
@@ -107,6 +109,7 @@ public class HUD : MonoBehaviour
         GameManager.Instance.GuardarJson(jugadores, nombreArchivo);
         mostrarTabla();
         insertado= false;
+           
         }
         
     }
@@ -118,6 +121,7 @@ public class HUD : MonoBehaviour
         Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name== "EscenaInsertar")
         {
+            seHaEscrito = false;
             insertado = true;
             GameManager.Instance.EscribirJsonVacio(nombreArchivo);
             mostrarTabla();
@@ -132,6 +136,11 @@ public class HUD : MonoBehaviour
             {
                 input.SetActive(true);
             }
+            if (seHaEscrito)
+            {
+                input.SetActive(false);
+            }
+
         }
     }
 

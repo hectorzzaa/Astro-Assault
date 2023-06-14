@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 
 public class ControladorJugador : MonoBehaviour
 {
+    public static ControladorJugador Instance { get; private set; }
     [Header("campos basicos")]
     [SerializeField] private float velocidad;
     [SerializeField] private Rigidbody2D rb;
@@ -29,13 +30,23 @@ public class ControladorJugador : MonoBehaviour
     [SerializeField] private bool sePuedeMover;
     [SerializeField] private float velocidadDash;
     [SerializeField] private float duraccionDash;
+                     public static bool recibeDaño;
 
 
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.Log("Hay mas de un jugador");
+        }
         sePuedeMover = true;
         puedeHacerDash = true;
+        recibeDaño= true;
         rb = GetComponent<Rigidbody2D>();
         controles= new Controles();
         
@@ -51,17 +62,20 @@ public class ControladorJugador : MonoBehaviour
         controles.Juego.disparo.started+=disparar;
 
         controles.Juego.Dash.started += Dash;
-
-        controles.Juego.Rotar.performed += RotarJugador;
-
-        controles.Juego.Rotar.canceled += RotarJugador;
     }
 
-    private void RotarJugador(InputAction.CallbackContext obj)
+    //Lo que hago es anular todo los eventos que empiezo en el metodo OnEnable asi cuando vuelva a cargar 
+    //la escena se vuelven a activar sin problemas
+    private void OnDisable()
     {
-        Vector2 rotateDir = obj.ReadValue<Vector2>();
-        Debug.Log(rotateDir);
+        controles.Juego.Disable();
+        controles.Juego.Movmiento.performed -= moverJugador;
+        controles.Juego.Movmiento.canceled -= moverJugador;
+        controles.Juego.disparo.started -= disparar;
+        controles.Juego.Dash.started -= Dash;
     }
+
+   
 
     private void Dash(InputAction.CallbackContext obj)
     {
@@ -80,13 +94,13 @@ public class ControladorJugador : MonoBehaviour
         Debug.Log("esto antes"+rb.velocity);
         rb.velocity =direccionJugador.normalized* velocidadDash;
         Debug.Log("esto despues" + rb.velocity);
-
+        recibeDaño = false;
 
 
         yield return new WaitForSeconds(duraccionDash);
         rb.velocity = Vector2.zero;
         sePuedeMover = true;
-
+        recibeDaño = true;
         puedeHacerDash = true;
 
 
@@ -165,10 +179,10 @@ public class ControladorJugador : MonoBehaviour
 
         //Instantiate(bala, controladorDisparo.position, controladorDisparo.rotation);
         if (SceneManager.GetActiveScene().name == "EscenaJuego")
-        { 
-        
+        {
 
-            StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalasJuagador, 0.1f));
+        StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalasJuagador, 0.1f));
+        }
 
           IEnumerator ActivarBalasConRetardo(int numBalas, float retardo)
           {
@@ -189,7 +203,7 @@ public class ControladorJugador : MonoBehaviour
 
                   yield return new WaitForSeconds(retardo);
               //}
-          }
+          
 
 
 

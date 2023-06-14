@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
     //El metodo se llamara al principio de todo incluso si existiese un metodo start()
     void Awake()
     {
-      
 
+        Time.timeScale = 1f;
 
         if (Instance == null)
         {
@@ -151,7 +151,10 @@ public class GameManager : MonoBehaviour
     //Metodo que sirve para detectar cuando se debe bajar la vida
     public void RecibirDaño()
     {
+         if (ControladorJugador.recibeDaño)
+        {
 
+        
         vidas-= 1;
         if (vidas <= 0)
         {
@@ -167,14 +170,15 @@ public class GameManager : MonoBehaviour
 
             MuerteJugador?.Invoke(this,EventArgs.Empty);
             //SceneManager.LoadScene(3);
+            hud.DescativarVidas(vidas);
 
-           
         }
         //Se llama a un metodo en el hud para que se quite una vida visual
-        if(vidas > 0)
+        else
         {
         hud.DescativarVidas(vidas);
 
+        }
         }
     }
     //Metodo que sirve para detectar cuando se debe subir la vida
