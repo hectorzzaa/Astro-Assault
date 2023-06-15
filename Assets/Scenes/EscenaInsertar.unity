@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -47.96, y: -202}
+  m_AnchoredPosition: {x: 484.4, y: -237.01}
   m_SizeDelta: {x: 554.81, y: 245.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159390781
@@ -693,6 +693,7 @@ MonoBehaviour:
   textoNombre: {fileID: 658372485}
   textoPuntuacion: {fileID: 274956766}
   input: {fileID: 159390779}
+  inputField: {fileID: 0}
   insertado: 0
   seHaEscrito: 0
 --- !u!1 &346499630
@@ -1160,6 +1161,7 @@ MonoBehaviour:
   cantidadBalasJuagador: 0
   municion: 0
   municionMax: 0
+  eventSystem: {fileID: 0}
 --- !u!4 &1227243543
 Transform:
   m_ObjectHideFlags: 0

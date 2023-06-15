@@ -25,15 +25,17 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         
     }
-   
+   //Metodo para cuando quiera que se reproduzca una musica o sonido
     public void ReproducirSonido(AudioClip audio)
     {
         audioSource.PlayOneShot(audio);
     }
+    //Paro la musica cuando hace falta
     public void PararMusica()
     {
         audioSource.Stop();
     }
+    //Vuelvo a poner la musica si hace falta
     public void ReanudarMusica()
     {
         audioSource.Play();

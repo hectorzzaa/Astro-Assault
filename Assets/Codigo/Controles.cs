@@ -615,6 +615,61 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""teclado"",
+                    ""id"": ""56f9dc0d-fbbc-4e44-a2c3-4c34b039ef5c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5f0bff9b-1d31-4d01-a61f-4183e0dc1393"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3d2e0a05-7929-4554-812b-eb89c86dca5c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9568da93-50ef-4a5d-be38-29f8f310872e"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""550e7a90-d850-478a-aef1-0900a3ed7dcf"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""34842dda-344f-4164-8768-45d1f4d96c43"",
                     ""path"": ""<Gamepad>/buttonSouth"",
@@ -624,6 +679,89 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""action"": ""Aceptar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""124fd48b-82b6-47f0-ad7c-9c5f2ea42be5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MenuGameover"",
+            ""id"": ""1f192bef-158d-4069-92ad-d4cfffac824e"",
+            ""actions"": [
+                {
+                    ""name"": ""Moverse"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""a5fdc3ee-da54-42d4-8dcf-4019dd8dc451"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""moverse"",
+                    ""id"": ""8934bc74-f290-4128-a5ce-015f214eab23"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d82ac6cf-3217-430b-a162-0c18f65e8dee"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f27f2db5-0b33-40bc-8c9b-5472c0611bce"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ae96c82b-d805-4e9f-ae59-2f2dc10bd318"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""03b4adea-d69e-49d4-bd5e-5a53ab7818c4"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -649,6 +787,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         m_MenuPrincipal = asset.FindActionMap("MenuPrincipal", throwIfNotFound: true);
         m_MenuPrincipal_Moverse = m_MenuPrincipal.FindAction("Moverse", throwIfNotFound: true);
         m_MenuPrincipal_Aceptar = m_MenuPrincipal.FindAction("Aceptar", throwIfNotFound: true);
+        // MenuGameover
+        m_MenuGameover = asset.FindActionMap("MenuGameover", throwIfNotFound: true);
+        m_MenuGameover_Moverse = m_MenuGameover.FindAction("Moverse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -892,6 +1033,39 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         }
     }
     public MenuPrincipalActions @MenuPrincipal => new MenuPrincipalActions(this);
+
+    // MenuGameover
+    private readonly InputActionMap m_MenuGameover;
+    private IMenuGameoverActions m_MenuGameoverActionsCallbackInterface;
+    private readonly InputAction m_MenuGameover_Moverse;
+    public struct MenuGameoverActions
+    {
+        private @Controles m_Wrapper;
+        public MenuGameoverActions(@Controles wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Moverse => m_Wrapper.m_MenuGameover_Moverse;
+        public InputActionMap Get() { return m_Wrapper.m_MenuGameover; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuGameoverActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuGameoverActions instance)
+        {
+            if (m_Wrapper.m_MenuGameoverActionsCallbackInterface != null)
+            {
+                @Moverse.started -= m_Wrapper.m_MenuGameoverActionsCallbackInterface.OnMoverse;
+                @Moverse.performed -= m_Wrapper.m_MenuGameoverActionsCallbackInterface.OnMoverse;
+                @Moverse.canceled -= m_Wrapper.m_MenuGameoverActionsCallbackInterface.OnMoverse;
+            }
+            m_Wrapper.m_MenuGameoverActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Moverse.started += instance.OnMoverse;
+                @Moverse.performed += instance.OnMoverse;
+                @Moverse.canceled += instance.OnMoverse;
+            }
+        }
+    }
+    public MenuGameoverActions @MenuGameover => new MenuGameoverActions(this);
     public interface IJuegoActions
     {
         void OnMovmiento(InputAction.CallbackContext context);
@@ -914,5 +1088,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     {
         void OnMoverse(InputAction.CallbackContext context);
         void OnAceptar(InputAction.CallbackContext context);
+    }
+    public interface IMenuGameoverActions
+    {
+        void OnMoverse(InputAction.CallbackContext context);
     }
 }

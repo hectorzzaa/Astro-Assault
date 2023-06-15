@@ -21,10 +21,7 @@ using UnityEngine.UI;
 
     //[SerializeField] private int id;
 
-    public void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-    }
+
     public float getVida()
     {
         return vida;
@@ -63,13 +60,7 @@ using UnityEngine.UI;
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        //Si llega a un objeto con la etiqueta de final se destruye asi consigo
-        //que cuando los enemigos caigan porque no han sido destruidos por el jugador se destruyan
-        if (collision.CompareTag("FinalAbajo"))
-        {
-            //gestionarPuntos(getPuntos());
-           // Destroy(this.gameObject);
-        }
+        
         //con la colision se establece que cuando colisione con el enemigo este se destuya y
         //llame a la instancia del GameManager y al metodo de recibir daño
         if (collision.CompareTag("Jugador"))
@@ -87,12 +78,13 @@ using UnityEngine.UI;
     {
         float vida = getVida();
 
-
+        //bajo la vida
         vida -= daño;
         setVida(vida);
+        //Si la vida llega a 0 o menor se llama al metodo de sumar los puntos
+        //y se destruye el enemigo
         if (vida <= 0)
         {
-            Debug.Log("se ha destruido el objeto por un disparo");
             GameManager.Instance.SumarPuntos(getPuntos());
             Destroy(this.gameObject);
             

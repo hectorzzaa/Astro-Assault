@@ -77,7 +77,9 @@ public class GameManager : MonoBehaviour
     public void CambiarElementoEvento(GameObject objetoSeleccionado)
     {
         // Cambia el primer objeto seleccionado
+        Debug.Log(objetoSeleccionado);
         eventSystem.firstSelectedGameObject = objetoSeleccionado;
+        
     }
 
 
@@ -162,7 +164,7 @@ public class GameManager : MonoBehaviour
         
         vidas-= 1;
             
-        if (vidas == 0)
+        if (vidas <= 0)
         {
             //Si las vidas son 0 se carga la escena del menu principal
             puntosUsuarios = puntosTotales;
@@ -208,10 +210,11 @@ public class GameManager : MonoBehaviour
     //C:\Users\hector\AppData\LocalLow\DefaultCompany\ProyectoUnity\Datos
     public void GuardarJson(List<JugadorData> nuevosjugadores, string nombreArchivo)
     {
-       
+        crearDirectorio();
+        //creo la lista para poder añadir mas adelante los datos que se escribiran en el json
         List<JugadorData> jugadoresExistente = new List<JugadorData>();
 
-        // Verificar si el archivo existe
+        // Verifico si el archivo existe
         string filePath = Path.Combine(Application.persistentDataPath+"/Datos", nombreArchivo + ".json");
         if (File.Exists(filePath))
         {
@@ -222,7 +225,7 @@ public class GameManager : MonoBehaviour
 
         jugadoresExistente.AddRange(nuevosjugadores);
 
-        // Crear la tabla  con los jugadores actualizados
+        // Creo la tabla  con los jugadores actualizados
         JugadoresTabla nuevosDatos = new JugadoresTabla(jugadoresExistente);
 
         // Serializar y guardar en el archivo
@@ -232,6 +235,7 @@ public class GameManager : MonoBehaviour
     }
     public void crearDirectorio()
     {
+        //Ruta donde se creara el diectorio a usar
         string directoryPath = Path.Combine(Application.persistentDataPath, "Datos");
         if (!Directory.Exists(directoryPath))
         {
@@ -258,14 +262,18 @@ public class GameManager : MonoBehaviour
 
     public List<JugadorData> LeerJson(string nombreArchivo)
     {
+        //saco la ruta del archivo
         string filePath = Path.Combine(Application.persistentDataPath + "/Datos", nombreArchivo + ".json");
+        //si existe guardo el contenido en una variable
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
+            //guardos los datos leidos en una lista de tipo jugadorestabla
             JugadoresTabla dataWrapper = JsonUtility.FromJson<JugadoresTabla>(json);
 
             if (dataWrapper != null)
             {
+                //si la lista no esta vacia la devuelve
                 return dataWrapper.jugadores;
             }
         }

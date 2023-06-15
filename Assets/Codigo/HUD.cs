@@ -21,6 +21,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoNombre;
     [SerializeField] private TextMeshProUGUI textoPuntuacion;
     [SerializeField] private GameObject input;
+
   
     [SerializeField] private bool insertado;
     [SerializeField] private bool seHaEscrito;
@@ -48,12 +49,22 @@ public class HUD : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (SceneManager.GetActiveScene().name == "EscenaInsertar")
+        {
+            controles.MenuInsertar.Disable();
+            controles.MenuInsertar.Aceptar.started -= InsertarNombre;
+
+        }
+    }
+
     private void InsertarNombre(InputAction.CallbackContext obj)
     {
         Debug.Log("input1 " + textoUsuario.text);
 
        
-
+        //creo una lista y le añado los datos recogidos del texto y la puntuacion
             List<JugadorData> jugadores = new List<JugadorData>();
             jugadores.Add(new JugadorData { usuario = textoUsuario.text, puntuacion = GameManager.puntosUsuarios });
 
@@ -70,8 +81,11 @@ public class HUD : MonoBehaviour
     //por ejemplo al perde una vida se desactiva la posicion 2
     public void DescativarVidas(int numVida)
     {
+        if (numVida >= 0 && numVida < Vidas.Length)
+        { 
+            Vidas[numVida].SetActive(false);
         
-        Vidas[numVida].SetActive(false);
+        }
 
         
     }
@@ -123,6 +137,7 @@ public class HUD : MonoBehaviour
         Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name== "EscenaInsertar")
         {
+           
             seHaEscrito = false;
             insertado = true;
             //GameManager.Instance.EscribirJsonVacio(nombreArchivo);
@@ -148,29 +163,40 @@ public class HUD : MonoBehaviour
 
     private void mostrarTabla()
     {
-        //List<JugadorData> jugadores = new List<JugadorData>();
+        //Guardo la lista que devueve el metodo
         var jugadores2 = GameManager.Instance.LeerJson(nombreArchivo);
+        //me aseguro que no sea null
+        if(jugadores2 != null)
+        {
+
+        //ordeno la lista de mayor a menos
         jugadores2=jugadores2.OrderByDescending(jugador=>jugador.puntuacion).ToList();
         Debug.Log(jugadores2);
-
+        
         string textoNombreCompleto = "";
         string textoPuntuacionCompleta = "";
         int indice = 1;
+            //recorro la lista
         foreach (JugadorData jugador in jugadores2)
         {
+                //Uso un if para que solo muestre 5 datos
             if (indice >= 6)
             {
                 break;
             }
             Debug.Log( jugador.usuario + ": " + jugador.puntuacion);
+            //guardo en varaibles el usuario y la puntuacion
             textoNombreCompleto +=indice+": "+ jugador.usuario + "\n";
             textoPuntuacionCompleta += jugador.puntuacion + "\n";
             indice++;
         }
+        //Los imprimo en los campos correspondientes de la pantalla
         textoNombre.text = textoNombreCompleto;
         textoPuntuacion.text = textoPuntuacionCompleta;
+        
+        }//fin if!=null
 
 
-    }
+    }//fin metodo
 
 }

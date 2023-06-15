@@ -18,12 +18,15 @@ public class ControladorBalaEnemigo : MonoBehaviour
     {
 
         timer += Time.deltaTime;
+        //temporizador para que la bala de desactive y
+        //no se quede fuera de la pantalla infinitamente
+
         while (timer > 3)
         {
             timer = 0;
             gameObject.SetActive(false);
         }
-        //transform.Translate(Vector2.down * 20 * Time.deltaTime);
+        //Con la posicion y velocidad hago que la bala se mueva en la direccione establecida
         transform.position += direction * speed * Time.deltaTime;
 
     }
@@ -32,19 +35,14 @@ public class ControladorBalaEnemigo : MonoBehaviour
     {
         direction = dir.normalized;
         speed = spd;
-    }
-    public void SetDirection(Vector3 dir)
-    {
-        direction = dir.normalized;
-
-        // Rotar el sprite de la bala
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Final"))
         {
-            Debug.Log("dado");
+            
             gameObject.SetActive(false);
         }
         if (collision.CompareTag("Jugador"))

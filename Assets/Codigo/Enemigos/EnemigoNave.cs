@@ -95,14 +95,7 @@ using UnityEngine;
 
     private void disparar()
     {
-        /*for (int i = 0; i < GameManager.Instance.cantidadBalas; i++)
-        {
-            GameObject bala2 = GameManager.Instance.GetListaObjetos();
-            if (bala2 != null)
-            {
-                bala2.transform.position = controladorDisparoEnemigo.position;
-                bala2.SetActive(true);
-            }*/
+      
 
          StartCoroutine(ActivarBalasConRetardo(GameManager.Instance.cantidadBalasEnemigo, 0.2f));
 
@@ -114,33 +107,32 @@ using UnityEngine;
             foreach (ControladorJugador naveJugador in navesJugador)
             {
                 
-            for (int i = 0; i < numBalas; i++)
-            {
-                Vector2 jugadorObjetivo = naveJugador.transform.position - transform.position;
-               
-                GameObject bala = GameManager.Instance.GetListaObjetos();
-                if (bala != null)
+                for (int i = 0; i < numBalas; i++)
                 {
-                    ControladorBalaEnemigo controlBala = bala.GetComponent<ControladorBalaEnemigo>();
-
-                    controlBala.SetDirection(jugadorObjetivo.normalized);
-                    controlBala.SetDirectionAndSpeed(jugadorObjetivo.normalized, velocidadBala);
-                    bala.transform.position = controladorDisparoEnemigo.position;
-                    bala.SetActive(true);
+                    //Consigo la direccion de donde esta el jugador
+                    Vector2 jugadorObjetivo = naveJugador.transform.position - transform.position;
+                    //Guardo en una variable de tipo GameObjet la lista de balas  para poner activarla en la escena
+                    GameObject bala = GameManager.Instance.GetListaObjetos();
+                    if (bala != null)
+                    {
+                        //Extraigo el controladorBala del objeto bala
+                        ControladorBalaEnemigo controlBala = bala.GetComponent<ControladorBalaEnemigo>();
+                        
+                        //Establezco la direccion de la bala hacia el jugador, su velocidad y su rotacion para que sea visible
+                        controlBala.SetDirectionAndSpeed(jugadorObjetivo.normalized, velocidadBala);
+                        //Le digo donde empezieza el disparo ene ste caso el objeto hijo Controlador Disapro
+                        bala.transform.position = controladorDisparoEnemigo.position;
+                        bala.SetActive(true);
                        
-                }
-                
-                yield return new WaitForSeconds(retardo);
+                    }
+                    //lo que esperara entre cada disparo
+                    yield return new WaitForSeconds(retardo);
 
-            }
+                }
              
             }
-    }
-
-
-
-    
-    }
+         }
+    }//fin metodo
 
 
 
