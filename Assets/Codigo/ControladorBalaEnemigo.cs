@@ -45,7 +45,7 @@ public class ControladorBalaEnemigo : MonoBehaviour
             
             gameObject.SetActive(false);
         }
-        if (collision.CompareTag("Jugador"))
+        if (collision.CompareTag("Jugador")&&ControladorJugador.recibeDaño)
         {
             GameManager.Instance.RecibirDaño();
             gameObject.SetActive(false);

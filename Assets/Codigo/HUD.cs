@@ -153,6 +153,10 @@ public class HUD : MonoBehaviour
             {
                 input.SetActive(true);
             }
+            else
+            {
+                input.SetActive(false);
+            }
             if (seHaEscrito)
             {
                 input.SetActive(false);
@@ -198,5 +202,12 @@ public class HUD : MonoBehaviour
 
 
     }//fin metodo
+    public void SalirInsertar(string nombreScena)
+    {
 
+
+
+        SceneManager.LoadScene(nombreScena);
+        GameManager.Instance.puntosTotales = 0;
+    }
 }

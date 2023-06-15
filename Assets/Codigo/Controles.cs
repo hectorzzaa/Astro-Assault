@@ -690,6 +690,17 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""action"": ""Aceptar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b36b06f7-182e-431b-bfd9-515b8c3f1613"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aceptar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

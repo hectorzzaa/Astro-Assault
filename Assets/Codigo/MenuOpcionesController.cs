@@ -27,6 +27,11 @@ public class MenuOpcionesController : MonoBehaviour
         //controles.MenuPausa.Aceptar.started += Reanudar;
         
     }
+    private void OnDisable()
+    {
+        controles.MenuPausa.Disable();
+        controles.MenuPausa.EntrarMenu.started -= Pausa;
+    }
 
 
     public void Pausa(InputAction.CallbackContext obj)
