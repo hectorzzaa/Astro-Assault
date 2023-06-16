@@ -160,9 +160,13 @@ public class GameManager : MonoBehaviour
     //Metodo que sirve para detectar cuando se debe bajar la vida
     public void RecibirDaño()
     {
-        
-        
+
+        if (ControladorJugador.recibeDaño)
+        {
+
         vidas-= 1;
+
+        }
             
         if (vidas <= 0)
         {

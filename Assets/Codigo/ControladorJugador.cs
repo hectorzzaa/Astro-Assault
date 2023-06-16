@@ -55,6 +55,7 @@ public class ControladorJugador : MonoBehaviour
     }
     private void OnEnable()
     {
+
         controles.Juego.Enable();
         //detecto cada vez que se pulsa un boton o se mantiene una direccion
         controles.Juego.Movmiento.performed+=moverJugador;
@@ -70,6 +71,8 @@ public class ControladorJugador : MonoBehaviour
     //la escena se vuelven a activar sin problemas
     private void OnDisable()
     {
+        //Desabilito los controles para asi cuando
+        //se vuelva a cargar la escena estos se puedan volver a ejecutar sin problemas
         controles.Juego.Disable();
         controles.Juego.Movmiento.performed -= moverJugador;
         controles.Juego.Movmiento.canceled -= moverJugador;
@@ -90,15 +93,19 @@ public class ControladorJugador : MonoBehaviour
 
     private IEnumerator Dash2()
     {
+        //Con estos booleanos me aseguro que no se pueda mover mientras se hace el dash
+        //ni pueda hacer otro
         puedeHacerDash = false;
         sePuedeMover = false;
+        recibeDaño = false;
         rb.gravityScale = 0;
         Debug.Log("esto antes"+rb.velocity);
+        //Amento la velocidad
         rb.velocity =direccionJugador.normalized* velocidadDash;
         Debug.Log("esto despues" + rb.velocity);
         recibeDaño = false;
 
-
+        //establezco cuando estara haciendo el dash
         yield return new WaitForSeconds(duraccionDash);
         rb.velocity = Vector2.zero;
         sePuedeMover = true;
@@ -132,26 +139,17 @@ public class ControladorJugador : MonoBehaviour
         transform.position = new Vector3(x,y,0);
 
         //rb.velocity = new Vector2(direccionJugador.x, direccionJugador.y);
-        if (sePuedeMover)
-        {
-            //gameObject.transform.Translate(new Vector2(direccionJugador.x, direccionJugador.y) *velocidad*Time.deltaTime);
-            float anguloRad = Mathf.Atan2(rotaccionJugador.y, rotaccionJugador.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * anguloRad);
-        }
-        if (Input.GetKey(KeyCode.Space)&&puedeHacerDash)
-        {
-            Debug.Log("se pulsa espacio");
-            //StartCoroutine(Dash2());
-            // StartCoroutine(Dash());
-        }
+       
+
 
 
     }
     private void FixedUpdate()
     {
+        //asi evito que durante el dash  pueda moverse
         if (sePuedeMover)
         {
-           
+          //establezco la velocidad del objeto usando la direccion de los controles
             rb.velocity = new Vector2(direccionJugador.x * velocidad, direccionJugador.y * velocidad);
             
         }

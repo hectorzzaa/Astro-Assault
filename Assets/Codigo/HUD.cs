@@ -208,6 +208,6 @@ public class HUD : MonoBehaviour
 
 
         SceneManager.LoadScene(nombreScena);
-        GameManager.Instance.puntosTotales = 0;
+        GameManager.puntosUsuarios = 0;
     }
 }
