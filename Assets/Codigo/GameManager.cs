@@ -292,4 +292,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log(input);
     }
+    public void Cerrar()
+    {
+        Application.Quit();
+    }
 }
