@@ -405,7 +405,10 @@ MonoBehaviour:
     Espace
     para hacer un dash
 
-    E para disparar'
+    E para disparar
+
+    Dentro del juego Escape para abrir
+    el menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -925,7 +928,10 @@ MonoBehaviour:
     Gatillo bajo
     derecho  para hacer un dash
 
-    Boton A/X/B para disparar'
+    Boton A/X/B para disparar
+
+    Dentro del juego
+    boto start para abrir el menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
